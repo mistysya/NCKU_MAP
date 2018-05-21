@@ -22,41 +22,36 @@ namespace Google_Maps_CS
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Assembly assembly = Assembly.GetExecutingAssembly();
-            //StreamReader reader = new StreamReader(assembly.GetManifestResourceStream("Google_Maps_CS.Maps.htm"));
-            //StreamReader reader = new StreamReader(assembly.GetManifestResourceStream("Google_Maps_CS.Gmaps.htm"));
-            /*
-            webBrowser1.DocumentText = reader.ReadToEnd();
-            string filename = @"C:\Users\Misty\Documents\C#\Google_Maps\Google_Maps_CS\Gmaps.htm";
-            Process.Start(filename);*/
-            panel1.Location = new Point(-panel1.Width, 0);
-            btnSide.Location = new Point(panel1.Right, 0);
-            btnSide.Visible = false;
-            string curDir = Directory.GetCurrentDirectory();
-            this.webBrowser1.Url = new Uri(String.Format(@"C:\Users\Misty\Documents\C#\Google_Maps\Google_Maps_CS\Gmaps.htm"));
+            panel1.Location = new Point(-panel1.Width, 0); // initiallize sidebar location
+            btnSide.Location = new Point(panel1.Right, 0); // initiallize sideButton location
+            btnSide.Visible = false; // hide sideButton
+            string fullPath = System.Environment.CurrentDirectory; // get html filepath
+            fullPath = fullPath.Replace("\\bin\\Debug", "\\Gmaps.htm"); // normalize
+            fullPath = fullPath.Replace("\\", "/"); // normalize
+            this.webBrowser1.Url = new Uri(fullPath); // show map on webBrowser1
         }
 
         private void tbxSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter && !lblScene.Text.Equals(""))
+            if(e.KeyCode == Keys.Enter && !lblScene.Text.Equals("")) // press "Enter"
             {
-                this.webBrowser1.Document.InvokeScript("GetAddressMarker", new Object[] { tbxSearch.Text });
-                panel1.Location = new Point(0, 0);
-                btnSide.Location = new Point(panel1.Right, 0);
-                btnSide.Visible = true;
-                lblScene.Text = tbxSearch.Text;
+                this.webBrowser1.Document.InvokeScript("GetAddressMarker", new Object[] { tbxSearch.Text }); // call javascript to Search
+                panel1.Location = new Point(0, 0); // move sidebar
+                btnSide.Location = new Point(panel1.Right, 0); // move sideButton
+                btnSide.Visible = true; // show sideButton
+                lblScene.Text = tbxSearch.Text; // update lblScene
             }
         }
 
         private void btnSide_Click(object sender, EventArgs e)
         {
-            if(panel1.Right == 0)
+            if(panel1.Right == 0) // show sideButton
             {
                 panel1.Location = new Point(0, 0);
                 btnSide.Location = new Point(panel1.Right, 0);
                 btnSide.Text = "‹";
             }
-            else
+            else // hide sideButton
             {
                 panel1.Location = new Point(-panel1.Width, 0);
                 btnSide.Location = new Point(panel1.Right, 0);
