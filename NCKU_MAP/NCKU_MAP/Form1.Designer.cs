@@ -31,6 +31,8 @@
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblBookMark = new System.Windows.Forms.Label();
             this.pbxOpenTime = new System.Windows.Forms.PictureBox();
             this.lblOpenTime = new System.Windows.Forms.Label();
             this.pbxPhoneNum = new System.Windows.Forms.PictureBox();
@@ -43,9 +45,8 @@
             this.btnBookmark = new System.Windows.Forms.Button();
             this.pbxScene = new System.Windows.Forms.PictureBox();
             this.lblScene = new System.Windows.Forms.Label();
-            this.lblBookMark = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
             this.btnSide = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOpenTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoneNum)).BeginInit();
@@ -76,6 +77,7 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.lblType);
             this.panel1.Controls.Add(this.lblBookMark);
             this.panel1.Controls.Add(this.pbxOpenTime);
@@ -94,6 +96,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(350, 680);
             this.panel1.TabIndex = 3;
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblType.Location = new System.Drawing.Point(13, 272);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(45, 20);
+            this.lblType.TabIndex = 13;
+            this.lblType.Text = "Type";
+            // 
+            // lblBookMark
+            // 
+            this.lblBookMark.AutoSize = true;
+            this.lblBookMark.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblBookMark.Location = new System.Drawing.Point(74, 319);
+            this.lblBookMark.Name = "lblBookMark";
+            this.lblBookMark.Size = new System.Drawing.Size(48, 24);
+            this.lblBookMark.TabIndex = 12;
+            this.lblBookMark.Text = "標記";
             // 
             // pbxOpenTime
             // 
@@ -209,31 +231,11 @@
             this.lblScene.TabIndex = 0;
             this.lblScene.Text = "SceneName";
             // 
-            // lblBookMark
-            // 
-            this.lblBookMark.AutoSize = true;
-            this.lblBookMark.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblBookMark.Location = new System.Drawing.Point(74, 319);
-            this.lblBookMark.Name = "lblBookMark";
-            this.lblBookMark.Size = new System.Drawing.Size(48, 24);
-            this.lblBookMark.TabIndex = 12;
-            this.lblBookMark.Text = "標記";
-            // 
-            // lblType
-            // 
-            this.lblType.AutoSize = true;
-            this.lblType.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblType.Location = new System.Drawing.Point(13, 272);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(45, 20);
-            this.lblType.TabIndex = 13;
-            this.lblType.Text = "Type";
-            // 
             // btnSide
             // 
             this.btnSide.BackColor = System.Drawing.Color.White;
             this.btnSide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSide.Font = new System.Drawing.Font("UD Digi Kyokasho NP-B", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnSide.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btnSide.Location = new System.Drawing.Point(348, 0);
             this.btnSide.Name = "btnSide";
             this.btnSide.Size = new System.Drawing.Size(19, 47);
@@ -241,6 +243,15 @@
             this.btnSide.Text = "‹";
             this.btnSide.UseVisualStyleBackColor = false;
             this.btnSide.Click += new System.EventHandler(this.btnSide_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(171, 325);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "test";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -286,6 +297,7 @@
         private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.Label lblBookMark;
         private System.Windows.Forms.Button btnSide;
+        private System.Windows.Forms.Button button1;
     }
 }
 
