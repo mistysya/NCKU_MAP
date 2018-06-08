@@ -92,6 +92,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Gmaps.htm" />
     <Content Include="MapInfo.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

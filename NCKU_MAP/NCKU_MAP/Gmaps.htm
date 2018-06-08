@@ -45,6 +45,10 @@
                        center: LatLng,
                        zoom: 16
                    });
+                   var marker = new google.maps.Marker({
+                       position: LatLng,
+                       map: map
+                   });
                    //marker.setPosition(LatLng); //將標記點定位到查詢結果
                    //marker.setTitle(address); //重新設定標記點的title
                    //$("#SearchLatLng").html("【您輸入的地址位置】緯度：" + LatLng.lat() + "經度：" + LatLng.lng());
