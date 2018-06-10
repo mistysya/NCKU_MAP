@@ -29,6 +29,7 @@ namespace Google_Maps_CS
             fullPath = fullPath.Replace("\\bin\\Debug", "\\Gmaps.htm"); // normalize
             fullPath = fullPath.Replace("\\", "/"); // normalize
             this.webBrowser1.Url = new Uri(fullPath); // show map on webBrowser1
+            //markpoint.Image = Image.FromFile(@"..\..\markstar.png");
         }
 
         private void tbxSearch_KeyDown(object sender, KeyEventArgs e)
@@ -58,5 +59,6 @@ namespace Google_Maps_CS
                 btnSide.Text = "›";
             }
         }
+
     }
 }
