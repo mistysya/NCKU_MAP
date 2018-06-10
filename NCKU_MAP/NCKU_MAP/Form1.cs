@@ -11,10 +11,12 @@ using System.IO;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace Google_Maps_CS
+namespace NCKU_MAP
 {
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class Form1 : Form
     {
+        public Form2 f2 = new Form2();
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace Google_Maps_CS
             fullPath = fullPath.Replace("\\bin\\Debug", "\\Gmaps.htm"); // normalize
             fullPath = fullPath.Replace("\\", "/"); // normalize
             this.webBrowser1.Url = new Uri(fullPath); // show map on webBrowser1
+            webBrowser1.ObjectForScripting = this;
         }
 
         private void tbxSearch_KeyDown(object sender, KeyEventArgs e)
@@ -57,6 +60,19 @@ namespace Google_Maps_CS
                 btnSide.Location = new Point(panel1.Right, 0);
                 btnSide.Text = "›";
             }
+        }
+
+        private void btnAddScene_Click(object sender, EventArgs e)
+        {
+            f2 = new Form2();
+            f2.Show();
+            this.webBrowser1.Document.InvokeScript("setAddMarker");
+        }
+
+        public void UpdateLatLng(double lat, double lng)
+        {
+            f2.UpdateLatLng(lat, lng);
+            //MessageBox.Show("You did it!", "UpdateLatLng");
         }
     }
 }
