@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblLat = new System.Windows.Forms.Label();
             this.lblLng = new System.Windows.Forms.Label();
             this.tbxLat = new System.Windows.Forms.TextBox();
@@ -47,13 +48,38 @@
             this.tbxDescript = new System.Windows.Forms.TextBox();
             this.lblDescript = new System.Windows.Forms.Label();
             this.btnAddToDatabase = new System.Windows.Forms.Button();
+            this.lblImgPath = new System.Windows.Forms.Label();
+            this.tbxImgPath = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.mapIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sceneNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sceneTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isMarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sceneDescriptDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.websiteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imagePathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.findKeywordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.latitudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.longitudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sceneInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mapInfoDataSet1 = new NCKU_MAP.MapInfoDataSet1();
+            this.sceneInfoTableAdapter = new NCKU_MAP.MapInfoDataSet1TableAdapters.SceneInfoTableAdapter();
+            this.btnDeleteFromDatabase = new System.Windows.Forms.Button();
+            this.lblID = new System.Windows.Forms.Label();
+            this.tbxID = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sceneInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapInfoDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblLat
             // 
             this.lblLat.AutoSize = true;
             this.lblLat.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblLat.Location = new System.Drawing.Point(6, 12);
+            this.lblLat.Location = new System.Drawing.Point(6, 10);
             this.lblLat.Name = "lblLat";
             this.lblLat.Size = new System.Drawing.Size(57, 20);
             this.lblLat.TabIndex = 0;
@@ -63,7 +89,7 @@
             // 
             this.lblLng.AutoSize = true;
             this.lblLng.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblLng.Location = new System.Drawing.Point(6, 40);
+            this.lblLng.Location = new System.Drawing.Point(6, 38);
             this.lblLng.Name = "lblLng";
             this.lblLng.Size = new System.Drawing.Size(57, 20);
             this.lblLng.TabIndex = 1;
@@ -71,21 +97,21 @@
             // 
             // tbxLat
             // 
-            this.tbxLat.Location = new System.Drawing.Point(69, 10);
+            this.tbxLat.Location = new System.Drawing.Point(69, 8);
             this.tbxLat.Name = "tbxLat";
             this.tbxLat.Size = new System.Drawing.Size(100, 22);
             this.tbxLat.TabIndex = 2;
             // 
             // tbxLng
             // 
-            this.tbxLng.Location = new System.Drawing.Point(69, 38);
+            this.tbxLng.Location = new System.Drawing.Point(69, 36);
             this.tbxLng.Name = "tbxLng";
             this.tbxLng.Size = new System.Drawing.Size(100, 22);
             this.tbxLng.TabIndex = 3;
             // 
             // tbxName
             // 
-            this.tbxName.Location = new System.Drawing.Point(69, 66);
+            this.tbxName.Location = new System.Drawing.Point(69, 92);
             this.tbxName.Name = "tbxName";
             this.tbxName.Size = new System.Drawing.Size(100, 22);
             this.tbxName.TabIndex = 5;
@@ -94,7 +120,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblName.Location = new System.Drawing.Point(6, 68);
+            this.lblName.Location = new System.Drawing.Point(6, 94);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(57, 20);
             this.lblName.TabIndex = 4;
@@ -102,7 +128,7 @@
             // 
             // tbxType
             // 
-            this.tbxType.Location = new System.Drawing.Point(69, 94);
+            this.tbxType.Location = new System.Drawing.Point(69, 120);
             this.tbxType.Name = "tbxType";
             this.tbxType.Size = new System.Drawing.Size(100, 22);
             this.tbxType.TabIndex = 7;
@@ -111,7 +137,7 @@
             // 
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblType.Location = new System.Drawing.Point(6, 96);
+            this.lblType.Location = new System.Drawing.Point(6, 122);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(57, 20);
             this.lblType.TabIndex = 6;
@@ -119,7 +145,7 @@
             // 
             // tbxWebsite
             // 
-            this.tbxWebsite.Location = new System.Drawing.Point(69, 122);
+            this.tbxWebsite.Location = new System.Drawing.Point(69, 148);
             this.tbxWebsite.Name = "tbxWebsite";
             this.tbxWebsite.Size = new System.Drawing.Size(100, 22);
             this.tbxWebsite.TabIndex = 9;
@@ -128,7 +154,7 @@
             // 
             this.lblWebsite.AutoSize = true;
             this.lblWebsite.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblWebsite.Location = new System.Drawing.Point(6, 124);
+            this.lblWebsite.Location = new System.Drawing.Point(6, 150);
             this.lblWebsite.Name = "lblWebsite";
             this.lblWebsite.Size = new System.Drawing.Size(57, 20);
             this.lblWebsite.TabIndex = 8;
@@ -136,7 +162,7 @@
             // 
             // tbxPhoneNum
             // 
-            this.tbxPhoneNum.Location = new System.Drawing.Point(69, 150);
+            this.tbxPhoneNum.Location = new System.Drawing.Point(69, 176);
             this.tbxPhoneNum.Name = "tbxPhoneNum";
             this.tbxPhoneNum.Size = new System.Drawing.Size(100, 22);
             this.tbxPhoneNum.TabIndex = 11;
@@ -145,7 +171,7 @@
             // 
             this.lblPhoneNum.AutoSize = true;
             this.lblPhoneNum.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblPhoneNum.Location = new System.Drawing.Point(6, 152);
+            this.lblPhoneNum.Location = new System.Drawing.Point(6, 178);
             this.lblPhoneNum.Name = "lblPhoneNum";
             this.lblPhoneNum.Size = new System.Drawing.Size(57, 20);
             this.lblPhoneNum.TabIndex = 10;
@@ -153,7 +179,7 @@
             // 
             // tbxAddress
             // 
-            this.tbxAddress.Location = new System.Drawing.Point(69, 206);
+            this.tbxAddress.Location = new System.Drawing.Point(69, 232);
             this.tbxAddress.Name = "tbxAddress";
             this.tbxAddress.Size = new System.Drawing.Size(132, 22);
             this.tbxAddress.TabIndex = 13;
@@ -162,7 +188,7 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblAddress.Location = new System.Drawing.Point(6, 208);
+            this.lblAddress.Location = new System.Drawing.Point(6, 234);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(57, 20);
             this.lblAddress.TabIndex = 12;
@@ -170,7 +196,7 @@
             // 
             // tbxOpenTime
             // 
-            this.tbxOpenTime.Location = new System.Drawing.Point(101, 178);
+            this.tbxOpenTime.Location = new System.Drawing.Point(101, 204);
             this.tbxOpenTime.Name = "tbxOpenTime";
             this.tbxOpenTime.Size = new System.Drawing.Size(100, 22);
             this.tbxOpenTime.TabIndex = 15;
@@ -179,7 +205,7 @@
             // 
             this.lblOpenTime.AutoSize = true;
             this.lblOpenTime.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblOpenTime.Location = new System.Drawing.Point(6, 178);
+            this.lblOpenTime.Location = new System.Drawing.Point(6, 204);
             this.lblOpenTime.Name = "lblOpenTime";
             this.lblOpenTime.Size = new System.Drawing.Size(89, 20);
             this.lblOpenTime.TabIndex = 14;
@@ -187,7 +213,7 @@
             // 
             // tbxDescript
             // 
-            this.tbxDescript.Location = new System.Drawing.Point(69, 234);
+            this.tbxDescript.Location = new System.Drawing.Point(69, 260);
             this.tbxDescript.Multiline = true;
             this.tbxDescript.Name = "tbxDescript";
             this.tbxDescript.Size = new System.Drawing.Size(132, 82);
@@ -197,7 +223,7 @@
             // 
             this.lblDescript.AutoSize = true;
             this.lblDescript.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblDescript.Location = new System.Drawing.Point(6, 236);
+            this.lblDescript.Location = new System.Drawing.Point(6, 262);
             this.lblDescript.Name = "lblDescript";
             this.lblDescript.Size = new System.Drawing.Size(57, 20);
             this.lblDescript.TabIndex = 16;
@@ -205,18 +231,186 @@
             // 
             // btnAddToDatabase
             // 
-            this.btnAddToDatabase.Location = new System.Drawing.Point(10, 322);
+            this.btnAddToDatabase.Location = new System.Drawing.Point(12, 407);
             this.btnAddToDatabase.Name = "btnAddToDatabase";
             this.btnAddToDatabase.Size = new System.Drawing.Size(75, 23);
             this.btnAddToDatabase.TabIndex = 18;
             this.btnAddToDatabase.Text = "確定新增";
             this.btnAddToDatabase.UseVisualStyleBackColor = true;
+            this.btnAddToDatabase.Click += new System.EventHandler(this.btnAddToDatabase_Click);
+            // 
+            // lblImgPath
+            // 
+            this.lblImgPath.AutoSize = true;
+            this.lblImgPath.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblImgPath.Location = new System.Drawing.Point(6, 348);
+            this.lblImgPath.Name = "lblImgPath";
+            this.lblImgPath.Size = new System.Drawing.Size(201, 20);
+            this.lblImgPath.TabIndex = 19;
+            this.lblImgPath.Text = "圖片路徑：(Fromfile(@\"\"))";
+            // 
+            // tbxImgPath
+            // 
+            this.tbxImgPath.Location = new System.Drawing.Point(12, 371);
+            this.tbxImgPath.Name = "tbxImgPath";
+            this.tbxImgPath.Size = new System.Drawing.Size(189, 22);
+            this.tbxImgPath.TabIndex = 20;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mapIDDataGridViewTextBoxColumn,
+            this.sceneNameDataGridViewTextBoxColumn,
+            this.sceneTypeDataGridViewTextBoxColumn,
+            this.isMarkDataGridViewTextBoxColumn,
+            this.sceneDescriptDataGridViewTextBoxColumn,
+            this.addressDataGridViewTextBoxColumn,
+            this.websiteDataGridViewTextBoxColumn,
+            this.phoneNumberDataGridViewTextBoxColumn,
+            this.openTimeDataGridViewTextBoxColumn,
+            this.imagePathDataGridViewTextBoxColumn,
+            this.findKeywordDataGridViewTextBoxColumn,
+            this.latitudeDataGridViewTextBoxColumn,
+            this.longitudeDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.sceneInfoBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(216, 8);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(725, 422);
+            this.dataGridView1.TabIndex = 21;
+            // 
+            // mapIDDataGridViewTextBoxColumn
+            // 
+            this.mapIDDataGridViewTextBoxColumn.DataPropertyName = "mapID";
+            this.mapIDDataGridViewTextBoxColumn.HeaderText = "mapID";
+            this.mapIDDataGridViewTextBoxColumn.Name = "mapIDDataGridViewTextBoxColumn";
+            // 
+            // sceneNameDataGridViewTextBoxColumn
+            // 
+            this.sceneNameDataGridViewTextBoxColumn.DataPropertyName = "SceneName";
+            this.sceneNameDataGridViewTextBoxColumn.HeaderText = "SceneName";
+            this.sceneNameDataGridViewTextBoxColumn.Name = "sceneNameDataGridViewTextBoxColumn";
+            // 
+            // sceneTypeDataGridViewTextBoxColumn
+            // 
+            this.sceneTypeDataGridViewTextBoxColumn.DataPropertyName = "SceneType";
+            this.sceneTypeDataGridViewTextBoxColumn.HeaderText = "SceneType";
+            this.sceneTypeDataGridViewTextBoxColumn.Name = "sceneTypeDataGridViewTextBoxColumn";
+            // 
+            // isMarkDataGridViewTextBoxColumn
+            // 
+            this.isMarkDataGridViewTextBoxColumn.DataPropertyName = "IsMark";
+            this.isMarkDataGridViewTextBoxColumn.HeaderText = "IsMark";
+            this.isMarkDataGridViewTextBoxColumn.Name = "isMarkDataGridViewTextBoxColumn";
+            // 
+            // sceneDescriptDataGridViewTextBoxColumn
+            // 
+            this.sceneDescriptDataGridViewTextBoxColumn.DataPropertyName = "SceneDescript";
+            this.sceneDescriptDataGridViewTextBoxColumn.HeaderText = "SceneDescript";
+            this.sceneDescriptDataGridViewTextBoxColumn.Name = "sceneDescriptDataGridViewTextBoxColumn";
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            // 
+            // websiteDataGridViewTextBoxColumn
+            // 
+            this.websiteDataGridViewTextBoxColumn.DataPropertyName = "Website";
+            this.websiteDataGridViewTextBoxColumn.HeaderText = "Website";
+            this.websiteDataGridViewTextBoxColumn.Name = "websiteDataGridViewTextBoxColumn";
+            // 
+            // phoneNumberDataGridViewTextBoxColumn
+            // 
+            this.phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
+            this.phoneNumberDataGridViewTextBoxColumn.HeaderText = "PhoneNumber";
+            this.phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
+            // 
+            // openTimeDataGridViewTextBoxColumn
+            // 
+            this.openTimeDataGridViewTextBoxColumn.DataPropertyName = "OpenTime";
+            this.openTimeDataGridViewTextBoxColumn.HeaderText = "OpenTime";
+            this.openTimeDataGridViewTextBoxColumn.Name = "openTimeDataGridViewTextBoxColumn";
+            // 
+            // imagePathDataGridViewTextBoxColumn
+            // 
+            this.imagePathDataGridViewTextBoxColumn.DataPropertyName = "ImagePath";
+            this.imagePathDataGridViewTextBoxColumn.HeaderText = "ImagePath";
+            this.imagePathDataGridViewTextBoxColumn.Name = "imagePathDataGridViewTextBoxColumn";
+            // 
+            // findKeywordDataGridViewTextBoxColumn
+            // 
+            this.findKeywordDataGridViewTextBoxColumn.DataPropertyName = "FindKeyword";
+            this.findKeywordDataGridViewTextBoxColumn.HeaderText = "FindKeyword";
+            this.findKeywordDataGridViewTextBoxColumn.Name = "findKeywordDataGridViewTextBoxColumn";
+            // 
+            // latitudeDataGridViewTextBoxColumn
+            // 
+            this.latitudeDataGridViewTextBoxColumn.DataPropertyName = "Latitude";
+            this.latitudeDataGridViewTextBoxColumn.HeaderText = "Latitude";
+            this.latitudeDataGridViewTextBoxColumn.Name = "latitudeDataGridViewTextBoxColumn";
+            // 
+            // longitudeDataGridViewTextBoxColumn
+            // 
+            this.longitudeDataGridViewTextBoxColumn.DataPropertyName = "Longitude";
+            this.longitudeDataGridViewTextBoxColumn.HeaderText = "Longitude";
+            this.longitudeDataGridViewTextBoxColumn.Name = "longitudeDataGridViewTextBoxColumn";
+            // 
+            // sceneInfoBindingSource
+            // 
+            this.sceneInfoBindingSource.DataMember = "SceneInfo";
+            this.sceneInfoBindingSource.DataSource = this.mapInfoDataSet1;
+            // 
+            // mapInfoDataSet1
+            // 
+            this.mapInfoDataSet1.DataSetName = "MapInfoDataSet1";
+            this.mapInfoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sceneInfoTableAdapter
+            // 
+            this.sceneInfoTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnDeleteFromDatabase
+            // 
+            this.btnDeleteFromDatabase.Location = new System.Drawing.Point(126, 407);
+            this.btnDeleteFromDatabase.Name = "btnDeleteFromDatabase";
+            this.btnDeleteFromDatabase.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteFromDatabase.TabIndex = 22;
+            this.btnDeleteFromDatabase.Text = "刪除";
+            this.btnDeleteFromDatabase.UseVisualStyleBackColor = true;
+            this.btnDeleteFromDatabase.Click += new System.EventHandler(this.btnDeleteFromDatabase_Click);
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblID.Location = new System.Drawing.Point(6, 66);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(57, 20);
+            this.lblID.TabIndex = 23;
+            this.lblID.Text = "編號：";
+            // 
+            // tbxID
+            // 
+            this.tbxID.Location = new System.Drawing.Point(69, 64);
+            this.tbxID.Name = "tbxID";
+            this.tbxID.Size = new System.Drawing.Size(100, 22);
+            this.tbxID.TabIndex = 24;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(217, 357);
+            this.ClientSize = new System.Drawing.Size(953, 450);
+            this.Controls.Add(this.tbxID);
+            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.btnDeleteFromDatabase);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tbxImgPath);
+            this.Controls.Add(this.lblImgPath);
             this.Controls.Add(this.btnAddToDatabase);
             this.Controls.Add(this.tbxDescript);
             this.Controls.Add(this.lblDescript);
@@ -238,6 +432,10 @@
             this.Controls.Add(this.lblLat);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form2_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sceneInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapInfoDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +462,27 @@
         private System.Windows.Forms.TextBox tbxDescript;
         private System.Windows.Forms.Label lblDescript;
         private System.Windows.Forms.Button btnAddToDatabase;
+        private System.Windows.Forms.Label lblImgPath;
+        private System.Windows.Forms.TextBox tbxImgPath;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private MapInfoDataSet1 mapInfoDataSet1;
+        private System.Windows.Forms.BindingSource sceneInfoBindingSource;
+        private MapInfoDataSet1TableAdapters.SceneInfoTableAdapter sceneInfoTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mapIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sceneNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sceneTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isMarkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sceneDescriptDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn websiteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn openTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imagePathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn findKeywordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn latitudeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn longitudeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnDeleteFromDatabase;
+        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.TextBox tbxID;
     }
 }

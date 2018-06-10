@@ -24,6 +24,8 @@ namespace NCKU_MAP
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: 這行程式碼會將資料載入 'mapInfoDataSet.SceneInfo' 資料表。您可以視需要進行移動或移除。
+            this.sceneInfoTableAdapter.Fill(this.mapInfoDataSet.SceneInfo);
             panel1.Location = new Point(-panel1.Width, 0); // initiallize sidebar location
             btnSide.Location = new Point(panel1.Right, 0); // initiallize sideButton location
             btnSide.Visible = false; // hide sideButton
