@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.lblLat = new System.Windows.Forms.Label();
             this.lblLng = new System.Windows.Forms.Label();
             this.tbxLat = new System.Windows.Forms.TextBox();
@@ -51,28 +50,11 @@
             this.lblImgPath = new System.Windows.Forms.Label();
             this.tbxImgPath = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.mapIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sceneNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sceneTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isMarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sceneDescriptDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.websiteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.openTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imagePathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.findKeywordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.latitudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.longitudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sceneInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mapInfoDataSet1 = new NCKU_MAP.MapInfoDataSet1();
-            this.sceneInfoTableAdapter = new NCKU_MAP.MapInfoDataSet1TableAdapters.SceneInfoTableAdapter();
             this.btnDeleteFromDatabase = new System.Windows.Forms.Button();
             this.lblID = new System.Windows.Forms.Label();
             this.tbxID = new System.Windows.Forms.TextBox();
+            this.btnupdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sceneInfoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mapInfoDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblLat
@@ -231,7 +213,7 @@
             // 
             // btnAddToDatabase
             // 
-            this.btnAddToDatabase.Location = new System.Drawing.Point(12, 407);
+            this.btnAddToDatabase.Location = new System.Drawing.Point(13, 461);
             this.btnAddToDatabase.Name = "btnAddToDatabase";
             this.btnAddToDatabase.Size = new System.Drawing.Size(75, 23);
             this.btnAddToDatabase.TabIndex = 18;
@@ -251,131 +233,23 @@
             // 
             // tbxImgPath
             // 
-            this.tbxImgPath.Location = new System.Drawing.Point(12, 371);
+            this.tbxImgPath.Location = new System.Drawing.Point(10, 371);
             this.tbxImgPath.Name = "tbxImgPath";
             this.tbxImgPath.Size = new System.Drawing.Size(189, 22);
             this.tbxImgPath.TabIndex = 20;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mapIDDataGridViewTextBoxColumn,
-            this.sceneNameDataGridViewTextBoxColumn,
-            this.sceneTypeDataGridViewTextBoxColumn,
-            this.isMarkDataGridViewTextBoxColumn,
-            this.sceneDescriptDataGridViewTextBoxColumn,
-            this.addressDataGridViewTextBoxColumn,
-            this.websiteDataGridViewTextBoxColumn,
-            this.phoneNumberDataGridViewTextBoxColumn,
-            this.openTimeDataGridViewTextBoxColumn,
-            this.imagePathDataGridViewTextBoxColumn,
-            this.findKeywordDataGridViewTextBoxColumn,
-            this.latitudeDataGridViewTextBoxColumn,
-            this.longitudeDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.sceneInfoBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(216, 8);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(725, 422);
+            this.dataGridView1.Size = new System.Drawing.Size(725, 476);
             this.dataGridView1.TabIndex = 21;
-            // 
-            // mapIDDataGridViewTextBoxColumn
-            // 
-            this.mapIDDataGridViewTextBoxColumn.DataPropertyName = "mapID";
-            this.mapIDDataGridViewTextBoxColumn.HeaderText = "mapID";
-            this.mapIDDataGridViewTextBoxColumn.Name = "mapIDDataGridViewTextBoxColumn";
-            // 
-            // sceneNameDataGridViewTextBoxColumn
-            // 
-            this.sceneNameDataGridViewTextBoxColumn.DataPropertyName = "SceneName";
-            this.sceneNameDataGridViewTextBoxColumn.HeaderText = "SceneName";
-            this.sceneNameDataGridViewTextBoxColumn.Name = "sceneNameDataGridViewTextBoxColumn";
-            // 
-            // sceneTypeDataGridViewTextBoxColumn
-            // 
-            this.sceneTypeDataGridViewTextBoxColumn.DataPropertyName = "SceneType";
-            this.sceneTypeDataGridViewTextBoxColumn.HeaderText = "SceneType";
-            this.sceneTypeDataGridViewTextBoxColumn.Name = "sceneTypeDataGridViewTextBoxColumn";
-            // 
-            // isMarkDataGridViewTextBoxColumn
-            // 
-            this.isMarkDataGridViewTextBoxColumn.DataPropertyName = "IsMark";
-            this.isMarkDataGridViewTextBoxColumn.HeaderText = "IsMark";
-            this.isMarkDataGridViewTextBoxColumn.Name = "isMarkDataGridViewTextBoxColumn";
-            // 
-            // sceneDescriptDataGridViewTextBoxColumn
-            // 
-            this.sceneDescriptDataGridViewTextBoxColumn.DataPropertyName = "SceneDescript";
-            this.sceneDescriptDataGridViewTextBoxColumn.HeaderText = "SceneDescript";
-            this.sceneDescriptDataGridViewTextBoxColumn.Name = "sceneDescriptDataGridViewTextBoxColumn";
-            // 
-            // addressDataGridViewTextBoxColumn
-            // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            // 
-            // websiteDataGridViewTextBoxColumn
-            // 
-            this.websiteDataGridViewTextBoxColumn.DataPropertyName = "Website";
-            this.websiteDataGridViewTextBoxColumn.HeaderText = "Website";
-            this.websiteDataGridViewTextBoxColumn.Name = "websiteDataGridViewTextBoxColumn";
-            // 
-            // phoneNumberDataGridViewTextBoxColumn
-            // 
-            this.phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
-            this.phoneNumberDataGridViewTextBoxColumn.HeaderText = "PhoneNumber";
-            this.phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
-            // 
-            // openTimeDataGridViewTextBoxColumn
-            // 
-            this.openTimeDataGridViewTextBoxColumn.DataPropertyName = "OpenTime";
-            this.openTimeDataGridViewTextBoxColumn.HeaderText = "OpenTime";
-            this.openTimeDataGridViewTextBoxColumn.Name = "openTimeDataGridViewTextBoxColumn";
-            // 
-            // imagePathDataGridViewTextBoxColumn
-            // 
-            this.imagePathDataGridViewTextBoxColumn.DataPropertyName = "ImagePath";
-            this.imagePathDataGridViewTextBoxColumn.HeaderText = "ImagePath";
-            this.imagePathDataGridViewTextBoxColumn.Name = "imagePathDataGridViewTextBoxColumn";
-            // 
-            // findKeywordDataGridViewTextBoxColumn
-            // 
-            this.findKeywordDataGridViewTextBoxColumn.DataPropertyName = "FindKeyword";
-            this.findKeywordDataGridViewTextBoxColumn.HeaderText = "FindKeyword";
-            this.findKeywordDataGridViewTextBoxColumn.Name = "findKeywordDataGridViewTextBoxColumn";
-            // 
-            // latitudeDataGridViewTextBoxColumn
-            // 
-            this.latitudeDataGridViewTextBoxColumn.DataPropertyName = "Latitude";
-            this.latitudeDataGridViewTextBoxColumn.HeaderText = "Latitude";
-            this.latitudeDataGridViewTextBoxColumn.Name = "latitudeDataGridViewTextBoxColumn";
-            // 
-            // longitudeDataGridViewTextBoxColumn
-            // 
-            this.longitudeDataGridViewTextBoxColumn.DataPropertyName = "Longitude";
-            this.longitudeDataGridViewTextBoxColumn.HeaderText = "Longitude";
-            this.longitudeDataGridViewTextBoxColumn.Name = "longitudeDataGridViewTextBoxColumn";
-            // 
-            // sceneInfoBindingSource
-            // 
-            this.sceneInfoBindingSource.DataMember = "SceneInfo";
-            this.sceneInfoBindingSource.DataSource = this.mapInfoDataSet1;
-            // 
-            // mapInfoDataSet1
-            // 
-            this.mapInfoDataSet1.DataSetName = "MapInfoDataSet1";
-            this.mapInfoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sceneInfoTableAdapter
-            // 
-            this.sceneInfoTableAdapter.ClearBeforeFill = true;
             // 
             // btnDeleteFromDatabase
             // 
-            this.btnDeleteFromDatabase.Location = new System.Drawing.Point(126, 407);
+            this.btnDeleteFromDatabase.Location = new System.Drawing.Point(124, 420);
             this.btnDeleteFromDatabase.Name = "btnDeleteFromDatabase";
             this.btnDeleteFromDatabase.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteFromDatabase.TabIndex = 22;
@@ -400,11 +274,22 @@
             this.tbxID.Size = new System.Drawing.Size(100, 22);
             this.tbxID.TabIndex = 24;
             // 
+            // btnupdate
+            // 
+            this.btnupdate.Location = new System.Drawing.Point(13, 420);
+            this.btnupdate.Name = "btnupdate";
+            this.btnupdate.Size = new System.Drawing.Size(75, 23);
+            this.btnupdate.TabIndex = 25;
+            this.btnupdate.Text = "修改";
+            this.btnupdate.UseVisualStyleBackColor = true;
+            this.btnupdate.Click += new System.EventHandler(this.btnupdate_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 450);
+            this.ClientSize = new System.Drawing.Size(953, 500);
+            this.Controls.Add(this.btnupdate);
             this.Controls.Add(this.tbxID);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.btnDeleteFromDatabase);
@@ -434,8 +319,6 @@
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sceneInfoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mapInfoDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,24 +348,9 @@
         private System.Windows.Forms.Label lblImgPath;
         private System.Windows.Forms.TextBox tbxImgPath;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private MapInfoDataSet1 mapInfoDataSet1;
-        private System.Windows.Forms.BindingSource sceneInfoBindingSource;
-        private MapInfoDataSet1TableAdapters.SceneInfoTableAdapter sceneInfoTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mapIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sceneNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sceneTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isMarkDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sceneDescriptDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn websiteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn openTimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn imagePathDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn findKeywordDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn latitudeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn longitudeDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnDeleteFromDatabase;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.TextBox tbxID;
+        private System.Windows.Forms.Button btnupdate;
     }
 }
