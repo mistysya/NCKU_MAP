@@ -15,7 +15,7 @@ namespace NCKU_MAP
     {
         public Form1 f1;
         int mapID = 0;
-        string findkeyword = null;//暫時丟資料庫
+        string findkeyword = null; //暫時丟資料庫
         public Form2()
         {
             InitializeComponent();
@@ -81,6 +81,7 @@ namespace NCKU_MAP
         {
             try
             {
+                MessageBox.Show(sqlstr);
                 SqlConnection cn = new SqlConnection();
                 cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
                     "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
@@ -92,6 +93,7 @@ namespace NCKU_MAP
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                //transaction.Rollback();
             }
         }
 
