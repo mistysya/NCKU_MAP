@@ -14,8 +14,7 @@ namespace NCKU_MAP
     public partial class Form2 : Form
     {
         public Form1 f1;
-        int mapID = 0;
-        string findkeyword = null;//暫時丟資料庫
+
         public Form2()
         {
             InitializeComponent();
@@ -29,31 +28,8 @@ namespace NCKU_MAP
             tbxLng.Text = lng.ToString();
         }
 
-        private void btnAddToDatabase_Click(object sender, EventArgs e)
-        {
-            mapID++;
-            Edit("INSERT INTO SceneInfo(mapID,SceneName,SceneType,SceneDescript,Address,Website,PhoneNumber,OpenTime,ImagePath,FindKeyword,Latitude,Longitude,IsMark)VALUES(N'" +
-                tbxID.Text.Replace("'", "''") + "',N'" +
-                tbxName.Text.Replace("'", "''") + "',N'" +
-                tbxType.Text.Replace("'", "''") + "',N'" +
-                tbxDescript.Text.Replace("'", "''") + "',N'" +
-                tbxAddress.Text.Replace("'", "''") + "',N'" +
-                tbxWebsite.Text.Replace("'", "''") + "',N'" +
-                tbxPhoneNum.Text.Replace("'", "''") + "',N'" +
-                tbxOpenTime.Text.Replace("'", "''") + "',N'" +
-                tbxImgPath.Text.Replace("'", "''") + "','" +
-                findkeyword + "',N'" +
-                tbxLat.Text.Replace("'", "''") + "','" +
-                tbxLng.Text.Replace("'", "''") + "'," +
-                0 + ")");
-            DataBindingsClear();
-            Form2_Load(sender, e);
-        }
-
         private void Form2_Load(object sender, EventArgs e)
         {
-            // TODO: 這行程式碼會將資料載入 'mapInfoDataSet1.SceneInfo' 資料表。您可以視需要進行移動或移除。
-            this.sceneInfoTableAdapter.Fill(this.mapInfoDataSet1.SceneInfo);
             SqlConnection cn = new SqlConnection();
             cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
                 "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
@@ -61,6 +37,9 @@ namespace NCKU_MAP
             DataSet ds = new DataSet();
             SqlDataAdapter daCategory = new SqlDataAdapter("SELECT * FROM SceneInfo", cn);
             daCategory.Fill(ds, "SceneInfo");
+
+            dataGridView1.DataSource = ds;
+            dataGridView1.DataMember = "SceneInfo";
 
             tbxLat.DataBindings.Add("Text", ds, "SceneInfo.Latitude");
             tbxLng.DataBindings.Add("Text", ds, "SceneInfo.Longitude");
@@ -75,6 +54,38 @@ namespace NCKU_MAP
             tbxDescript.DataBindings.Add("Text", ds, "SceneInfo.SceneDescript");
 
             bm = this.BindingContext[ds, "SceneInfo"];
+        }
+
+
+        private void btnAddToDatabase_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection cn = new SqlConnection();
+                cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
+                    "Integrated Security=True";
+                Edit("INSERT INTO SceneInfo(mapID,SceneName,SceneType,SceneDescript,Address,Website,PhoneNumber,OpenTime,ImagePath,Latitude,Longitude,IsMark)VALUES(N'" +
+                    tbxID.Text.Replace("'", "''") + "',N'" +
+                    tbxName.Text.Replace("'", "''") + "',N'" +
+                    tbxType.Text.Replace("'", "''") + "',N'" +
+                    tbxDescript.Text.Replace("'", "''") + "',N'" +
+                    tbxAddress.Text.Replace("'", "''") + "',N'" +
+                    tbxWebsite.Text.Replace("'", "''") + "',N'" +
+                    tbxPhoneNum.Text.Replace("'", "''") + "',N'" +
+                    tbxOpenTime.Text.Replace("'", "''") + "',N'" +
+                    tbxImgPath.Text.Replace("'", "''") + "','" +
+                    tbxLat.Text.Replace("'", "''") + "','" +
+                    tbxLng.Text.Replace("'", "''") + "'," +
+                    0 + ")");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            DataBindingsClear();
+            Form2_Load(sender, e);
         }
 
         void Edit(string sqlstr)
@@ -114,6 +125,23 @@ namespace NCKU_MAP
         {
             Edit("DELETE FROM SceneInfo WHERE mapID='" +
                 tbxID.Text.Replace("'", "''") + "'");
+            DataBindingsClear();
+            Form2_Load(sender, e);
+        }
+
+        private void btnupdate_Click(object sender, EventArgs e)
+        {
+            Edit("UPDATE SceneInfo SET SceneName= '" + tbxName.Text.Replace("'", "''") +
+                "',SceneType='" + tbxType.Text.Replace("'", "''") +
+                "',SceneDescript='" + tbxDescript.Text.Replace("'", "''") +
+                "',Address='" + tbxAddress.Text.Replace("'", "''") +
+                "',Website='" + tbxWebsite.Text.Replace("'", "''") +
+                "',PhoneNumber='" + tbxPhoneNum.Text.Replace("'", "''") +
+                "',OpenTime='" + tbxOpenTime.Text.Replace("'", "''") +
+                "',ImagePath='" + tbxImgPath.Text.Replace("'", "''") +
+                "',Latitude='" + tbxLat.Text.Replace("'", "''") +
+                "',Longitude='" + tbxLng.Text.Replace("'", "''") +
+                "' WHERE mapID='" + tbxID.Text.Replace("'", "''") + "'");
             DataBindingsClear();
             Form2_Load(sender, e);
         }
