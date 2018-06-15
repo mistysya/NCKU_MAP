@@ -106,10 +106,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="NCKU_logo.png" />
     <None Include="time_icon.png" />
     <None Include="phone_icon.png" />
     <None Include="website-icon.png" />
     <None Include="address_icon.png" />
+    <None Include="function_icon.png" />
     <Content Include="Gmaps.htm" />
   </ItemGroup>
   <ItemGroup>

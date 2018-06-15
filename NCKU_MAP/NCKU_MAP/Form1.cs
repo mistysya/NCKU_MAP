@@ -32,6 +32,8 @@ namespace NCKU_MAP
             fullPath = fullPath.Replace("\\", "/"); // normalize
             this.webBrowser1.Url = new Uri(fullPath); // show map on webBrowser1
             webBrowser1.ObjectForScripting = this;
+            panel2.Dock = DockStyle.Left;
+            panlogo.Location = new Point(0, 0);
         }
 
         private void tbxSearch_KeyDown(object sender, KeyEventArgs e)
@@ -73,6 +75,16 @@ namespace NCKU_MAP
         {
             f2.UpdateLatLng(lat, lng);
             //MessageBox.Show("You did it!", "UpdateLatLng");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = panlogo.Visible = true;
+        }
+
+        private void btnclosesheet_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = panlogo.Visible = false;
         }
     }
 }

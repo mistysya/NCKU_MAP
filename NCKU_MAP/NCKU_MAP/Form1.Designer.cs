@@ -31,26 +31,36 @@
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnguide = new System.Windows.Forms.Button();
-            this.btnlocate = new System.Windows.Forms.Button();
-            this.btnstar = new System.Windows.Forms.Button();
             this.lblType = new System.Windows.Forms.Label();
             this.lblBookMark = new System.Windows.Forms.Label();
-            this.pbxOpenTime = new System.Windows.Forms.PictureBox();
             this.lblOpenTime = new System.Windows.Forms.Label();
-            this.pbxPhoneNum = new System.Windows.Forms.PictureBox();
             this.lblPhoneNum = new System.Windows.Forms.Label();
-            this.pbxWebsite = new System.Windows.Forms.PictureBox();
             this.lblWebsite = new System.Windows.Forms.Label();
-            this.pbxAddress = new System.Windows.Forms.PictureBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.tbxDescript = new System.Windows.Forms.TextBox();
             this.btnBookmark = new System.Windows.Forms.Button();
-            this.pbxScene = new System.Windows.Forms.PictureBox();
             this.lblScene = new System.Windows.Forms.Label();
             this.btnSide = new System.Windows.Forms.Button();
             this.btnAddScene = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panlogo = new System.Windows.Forms.Panel();
+            this.lbltitle = new System.Windows.Forms.Label();
+            this.btnclosesheet = new System.Windows.Forms.Button();
+            this.btnsaved = new System.Windows.Forms.Button();
+            this.btnclasstable = new System.Windows.Forms.Button();
+            this.btnfeedback = new System.Windows.Forms.Button();
+            this.btnguide = new System.Windows.Forms.Button();
+            this.pbxlogo = new System.Windows.Forms.PictureBox();
+            this.btnsheet = new System.Windows.Forms.Button();
+            this.pbxOpenTime = new System.Windows.Forms.PictureBox();
+            this.pbxPhoneNum = new System.Windows.Forms.PictureBox();
+            this.pbxWebsite = new System.Windows.Forms.PictureBox();
+            this.pbxAddress = new System.Windows.Forms.PictureBox();
+            this.pbxScene = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panlogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxlogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOpenTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoneNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxWebsite)).BeginInit();
@@ -61,9 +71,9 @@
             // tbxSearch
             // 
             this.tbxSearch.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbxSearch.Location = new System.Drawing.Point(566, 12);
+            this.tbxSearch.Location = new System.Drawing.Point(55, 12);
             this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(331, 35);
+            this.tbxSearch.Size = new System.Drawing.Size(280, 35);
             this.tbxSearch.TabIndex = 1;
             this.tbxSearch.Text = "搜尋地點";
             this.tbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyDown);
@@ -81,8 +91,6 @@
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.Controls.Add(this.btnguide);
-            this.panel1.Controls.Add(this.btnlocate);
-            this.panel1.Controls.Add(this.btnstar);
             this.panel1.Controls.Add(this.lblType);
             this.panel1.Controls.Add(this.lblBookMark);
             this.panel1.Controls.Add(this.pbxOpenTime);
@@ -102,62 +110,11 @@
             this.panel1.Size = new System.Drawing.Size(350, 680);
             this.panel1.TabIndex = 3;
             // 
-            // btnguide
-            // 
-            this.btnguide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(79)))), ((int)(((byte)(236)))));
-            this.btnguide.FlatAppearance.BorderSize = 0;
-            this.btnguide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnguide.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnguide.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnguide.Image = global::NCKU_MAP.Properties.Resources.guide_icon;
-            this.btnguide.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnguide.Location = new System.Drawing.Point(233, 0);
-            this.btnguide.Name = "btnguide";
-            this.btnguide.Size = new System.Drawing.Size(117, 100);
-            this.btnguide.TabIndex = 16;
-            this.btnguide.Text = "導航";
-            this.btnguide.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnguide.UseVisualStyleBackColor = false;
-            // 
-            // btnlocate
-            // 
-            this.btnlocate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(79)))), ((int)(((byte)(236)))));
-            this.btnlocate.FlatAppearance.BorderSize = 0;
-            this.btnlocate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnlocate.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnlocate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnlocate.Image = global::NCKU_MAP.Properties.Resources.locate_icon;
-            this.btnlocate.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnlocate.Location = new System.Drawing.Point(117, 0);
-            this.btnlocate.Name = "btnlocate";
-            this.btnlocate.Size = new System.Drawing.Size(116, 100);
-            this.btnlocate.TabIndex = 15;
-            this.btnlocate.Text = "定位";
-            this.btnlocate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnlocate.UseVisualStyleBackColor = false;
-            // 
-            // btnstar
-            // 
-            this.btnstar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(79)))), ((int)(((byte)(236)))));
-            this.btnstar.FlatAppearance.BorderSize = 0;
-            this.btnstar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnstar.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnstar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnstar.Image = global::NCKU_MAP.Properties.Resources.star_icon;
-            this.btnstar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnstar.Location = new System.Drawing.Point(0, 0);
-            this.btnstar.Name = "btnstar";
-            this.btnstar.Size = new System.Drawing.Size(117, 100);
-            this.btnstar.TabIndex = 14;
-            this.btnstar.Text = "儲存點";
-            this.btnstar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnstar.UseVisualStyleBackColor = false;
-            // 
             // lblType
             // 
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblType.Location = new System.Drawing.Point(13, 320);
+            this.lblType.Location = new System.Drawing.Point(12, 298);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(45, 20);
             this.lblType.TabIndex = 13;
@@ -167,21 +124,11 @@
             // 
             this.lblBookMark.AutoSize = true;
             this.lblBookMark.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblBookMark.Location = new System.Drawing.Point(74, 367);
+            this.lblBookMark.Location = new System.Drawing.Point(82, 343);
             this.lblBookMark.Name = "lblBookMark";
             this.lblBookMark.Size = new System.Drawing.Size(48, 24);
             this.lblBookMark.TabIndex = 12;
             this.lblBookMark.Text = "標記";
-            // 
-            // pbxOpenTime
-            // 
-            this.pbxOpenTime.BackgroundImage = global::NCKU_MAP.Properties.Resources.time_icon;
-            this.pbxOpenTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxOpenTime.Location = new System.Drawing.Point(11, 649);
-            this.pbxOpenTime.Name = "pbxOpenTime";
-            this.pbxOpenTime.Size = new System.Drawing.Size(25, 25);
-            this.pbxOpenTime.TabIndex = 11;
-            this.pbxOpenTime.TabStop = false;
             // 
             // lblOpenTime
             // 
@@ -193,16 +140,6 @@
             this.lblOpenTime.TabIndex = 10;
             this.lblOpenTime.Text = "OpenTime";
             // 
-            // pbxPhoneNum
-            // 
-            this.pbxPhoneNum.BackgroundImage = global::NCKU_MAP.Properties.Resources.phone_icon;
-            this.pbxPhoneNum.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxPhoneNum.Location = new System.Drawing.Point(11, 619);
-            this.pbxPhoneNum.Name = "pbxPhoneNum";
-            this.pbxPhoneNum.Size = new System.Drawing.Size(25, 25);
-            this.pbxPhoneNum.TabIndex = 9;
-            this.pbxPhoneNum.TabStop = false;
-            // 
             // lblPhoneNum
             // 
             this.lblPhoneNum.AutoSize = true;
@@ -213,16 +150,6 @@
             this.lblPhoneNum.TabIndex = 8;
             this.lblPhoneNum.Text = "PhoneNumber";
             // 
-            // pbxWebsite
-            // 
-            this.pbxWebsite.BackgroundImage = global::NCKU_MAP.Properties.Resources.website_icon;
-            this.pbxWebsite.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxWebsite.Location = new System.Drawing.Point(11, 590);
-            this.pbxWebsite.Name = "pbxWebsite";
-            this.pbxWebsite.Size = new System.Drawing.Size(25, 25);
-            this.pbxWebsite.TabIndex = 7;
-            this.pbxWebsite.TabStop = false;
-            // 
             // lblWebsite
             // 
             this.lblWebsite.AutoSize = true;
@@ -232,16 +159,6 @@
             this.lblWebsite.Size = new System.Drawing.Size(70, 20);
             this.lblWebsite.TabIndex = 6;
             this.lblWebsite.Text = "Website";
-            // 
-            // pbxAddress
-            // 
-            this.pbxAddress.BackgroundImage = global::NCKU_MAP.Properties.Resources.address_icon;
-            this.pbxAddress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxAddress.Location = new System.Drawing.Point(11, 561);
-            this.pbxAddress.Name = "pbxAddress";
-            this.pbxAddress.Size = new System.Drawing.Size(25, 25);
-            this.pbxAddress.TabIndex = 5;
-            this.pbxAddress.TabStop = false;
             // 
             // lblAddress
             // 
@@ -257,11 +174,11 @@
             // 
             this.tbxDescript.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbxDescript.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbxDescript.Location = new System.Drawing.Point(0, 406);
+            this.tbxDescript.Location = new System.Drawing.Point(0, 379);
             this.tbxDescript.Multiline = true;
             this.tbxDescript.Name = "tbxDescript";
             this.tbxDescript.ReadOnly = true;
-            this.tbxDescript.Size = new System.Drawing.Size(350, 148);
+            this.tbxDescript.Size = new System.Drawing.Size(350, 176);
             this.tbxDescript.TabIndex = 3;
             // 
             // btnBookmark
@@ -269,27 +186,18 @@
             this.btnBookmark.BackColor = System.Drawing.Color.LightBlue;
             this.btnBookmark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBookmark.Font = new System.Drawing.Font("微軟正黑體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnBookmark.Location = new System.Drawing.Point(13, 357);
+            this.btnBookmark.Location = new System.Drawing.Point(12, 333);
             this.btnBookmark.Name = "btnBookmark";
             this.btnBookmark.Size = new System.Drawing.Size(40, 40);
             this.btnBookmark.TabIndex = 2;
             this.btnBookmark.Text = "標";
             this.btnBookmark.UseVisualStyleBackColor = false;
             // 
-            // pbxScene
-            // 
-            this.pbxScene.BackColor = System.Drawing.Color.DarkRed;
-            this.pbxScene.Location = new System.Drawing.Point(0, 100);
-            this.pbxScene.Name = "pbxScene";
-            this.pbxScene.Size = new System.Drawing.Size(350, 180);
-            this.pbxScene.TabIndex = 1;
-            this.pbxScene.TabStop = false;
-            // 
             // lblScene
             // 
             this.lblScene.AutoSize = true;
             this.lblScene.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblScene.Location = new System.Drawing.Point(7, 282);
+            this.lblScene.Location = new System.Drawing.Point(5, 251);
             this.lblScene.Name = "lblScene";
             this.lblScene.Size = new System.Drawing.Size(166, 34);
             this.lblScene.TabIndex = 0;
@@ -302,7 +210,7 @@
             this.btnSide.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btnSide.Location = new System.Drawing.Point(348, 0);
             this.btnSide.Name = "btnSide";
-            this.btnSide.Size = new System.Drawing.Size(19, 47);
+            this.btnSide.Size = new System.Drawing.Size(20, 45);
             this.btnSide.TabIndex = 4;
             this.btnSide.Text = "‹";
             this.btnSide.UseVisualStyleBackColor = false;
@@ -310,7 +218,7 @@
             // 
             // btnAddScene
             // 
-            this.btnAddScene.Location = new System.Drawing.Point(913, 12);
+            this.btnAddScene.Location = new System.Drawing.Point(1156, 12);
             this.btnAddScene.Name = "btnAddScene";
             this.btnAddScene.Size = new System.Drawing.Size(80, 35);
             this.btnAddScene.TabIndex = 5;
@@ -318,12 +226,189 @@
             this.btnAddScene.UseVisualStyleBackColor = true;
             this.btnAddScene.Click += new System.EventHandler(this.btnAddScene_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.btnfeedback);
+            this.panel2.Controls.Add(this.btnclasstable);
+            this.panel2.Controls.Add(this.btnsaved);
+            this.panel2.Location = new System.Drawing.Point(740, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(309, 680);
+            this.panel2.TabIndex = 7;
+            this.panel2.Visible = false;
+            // 
+            // panlogo
+            // 
+            this.panlogo.BackColor = System.Drawing.Color.Goldenrod;
+            this.panlogo.Controls.Add(this.btnclosesheet);
+            this.panlogo.Controls.Add(this.lbltitle);
+            this.panlogo.Controls.Add(this.pbxlogo);
+            this.panlogo.Location = new System.Drawing.Point(740, 0);
+            this.panlogo.Name = "panlogo";
+            this.panlogo.Size = new System.Drawing.Size(309, 80);
+            this.panlogo.TabIndex = 9;
+            this.panlogo.Visible = false;
+            // 
+            // lbltitle
+            // 
+            this.lbltitle.AutoSize = true;
+            this.lbltitle.Font = new System.Drawing.Font("Monotype Corsiva", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbltitle.Location = new System.Drawing.Point(66, 18);
+            this.lbltitle.Name = "lbltitle";
+            this.lbltitle.Size = new System.Drawing.Size(180, 39);
+            this.lbltitle.TabIndex = 1;
+            this.lbltitle.Text = "NCKU MAP";
+            // 
+            // btnclosesheet
+            // 
+            this.btnclosesheet.FlatAppearance.BorderSize = 0;
+            this.btnclosesheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnclosesheet.Font = new System.Drawing.Font("Mistral", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclosesheet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnclosesheet.Location = new System.Drawing.Point(274, 0);
+            this.btnclosesheet.Name = "btnclosesheet";
+            this.btnclosesheet.Size = new System.Drawing.Size(35, 80);
+            this.btnclosesheet.TabIndex = 2;
+            this.btnclosesheet.Text = "<<";
+            this.btnclosesheet.UseVisualStyleBackColor = true;
+            this.btnclosesheet.Click += new System.EventHandler(this.btnclosesheet_Click);
+            // 
+            // btnsaved
+            // 
+            this.btnsaved.FlatAppearance.BorderSize = 0;
+            this.btnsaved.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnsaved.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnsaved.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnsaved.Location = new System.Drawing.Point(0, 80);
+            this.btnsaved.Name = "btnsaved";
+            this.btnsaved.Size = new System.Drawing.Size(309, 70);
+            this.btnsaved.TabIndex = 0;
+            this.btnsaved.Text = "儲存點";
+            this.btnsaved.UseVisualStyleBackColor = true;
+            // 
+            // btnclasstable
+            // 
+            this.btnclasstable.FlatAppearance.BorderSize = 0;
+            this.btnclasstable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnclasstable.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnclasstable.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnclasstable.Location = new System.Drawing.Point(0, 150);
+            this.btnclasstable.Name = "btnclasstable";
+            this.btnclasstable.Size = new System.Drawing.Size(309, 70);
+            this.btnclasstable.TabIndex = 2;
+            this.btnclasstable.Text = "課表地圖";
+            this.btnclasstable.UseVisualStyleBackColor = true;
+            // 
+            // btnfeedback
+            // 
+            this.btnfeedback.FlatAppearance.BorderSize = 0;
+            this.btnfeedback.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnfeedback.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnfeedback.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnfeedback.Location = new System.Drawing.Point(0, 613);
+            this.btnfeedback.Name = "btnfeedback";
+            this.btnfeedback.Size = new System.Drawing.Size(309, 70);
+            this.btnfeedback.TabIndex = 3;
+            this.btnfeedback.Text = "意見回饋";
+            this.btnfeedback.UseVisualStyleBackColor = true;
+            // 
+            // btnguide
+            // 
+            this.btnguide.BackgroundImage = global::NCKU_MAP.Properties.Resources.guide_icon;
+            this.btnguide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnguide.FlatAppearance.BorderSize = 0;
+            this.btnguide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnguide.Location = new System.Drawing.Point(287, 240);
+            this.btnguide.Name = "btnguide";
+            this.btnguide.Size = new System.Drawing.Size(60, 60);
+            this.btnguide.TabIndex = 14;
+            this.btnguide.UseVisualStyleBackColor = true;
+            // 
+            // pbxlogo
+            // 
+            this.pbxlogo.BackgroundImage = global::NCKU_MAP.Properties.Resources.NCKU_logo;
+            this.pbxlogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxlogo.Location = new System.Drawing.Point(14, 12);
+            this.pbxlogo.Name = "pbxlogo";
+            this.pbxlogo.Size = new System.Drawing.Size(50, 50);
+            this.pbxlogo.TabIndex = 0;
+            this.pbxlogo.TabStop = false;
+            // 
+            // btnsheet
+            // 
+            this.btnsheet.BackgroundImage = global::NCKU_MAP.Properties.Resources.function_icon;
+            this.btnsheet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnsheet.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnsheet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.btnsheet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.btnsheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnsheet.Location = new System.Drawing.Point(20, 12);
+            this.btnsheet.Name = "btnsheet";
+            this.btnsheet.Size = new System.Drawing.Size(35, 35);
+            this.btnsheet.TabIndex = 8;
+            this.btnsheet.UseVisualStyleBackColor = true;
+            this.btnsheet.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pbxOpenTime
+            // 
+            this.pbxOpenTime.BackgroundImage = global::NCKU_MAP.Properties.Resources.time_icon;
+            this.pbxOpenTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxOpenTime.Location = new System.Drawing.Point(11, 649);
+            this.pbxOpenTime.Name = "pbxOpenTime";
+            this.pbxOpenTime.Size = new System.Drawing.Size(25, 25);
+            this.pbxOpenTime.TabIndex = 11;
+            this.pbxOpenTime.TabStop = false;
+            // 
+            // pbxPhoneNum
+            // 
+            this.pbxPhoneNum.BackgroundImage = global::NCKU_MAP.Properties.Resources.phone_icon;
+            this.pbxPhoneNum.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxPhoneNum.Location = new System.Drawing.Point(11, 619);
+            this.pbxPhoneNum.Name = "pbxPhoneNum";
+            this.pbxPhoneNum.Size = new System.Drawing.Size(25, 25);
+            this.pbxPhoneNum.TabIndex = 9;
+            this.pbxPhoneNum.TabStop = false;
+            // 
+            // pbxWebsite
+            // 
+            this.pbxWebsite.BackgroundImage = global::NCKU_MAP.Properties.Resources.website_icon;
+            this.pbxWebsite.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxWebsite.Location = new System.Drawing.Point(11, 590);
+            this.pbxWebsite.Name = "pbxWebsite";
+            this.pbxWebsite.Size = new System.Drawing.Size(25, 25);
+            this.pbxWebsite.TabIndex = 7;
+            this.pbxWebsite.TabStop = false;
+            // 
+            // pbxAddress
+            // 
+            this.pbxAddress.BackgroundImage = global::NCKU_MAP.Properties.Resources.address_icon;
+            this.pbxAddress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxAddress.Location = new System.Drawing.Point(11, 561);
+            this.pbxAddress.Name = "pbxAddress";
+            this.pbxAddress.Size = new System.Drawing.Size(25, 25);
+            this.pbxAddress.TabIndex = 5;
+            this.pbxAddress.TabStop = false;
+            // 
+            // pbxScene
+            // 
+            this.pbxScene.BackColor = System.Drawing.Color.DarkRed;
+            this.pbxScene.Location = new System.Drawing.Point(0, 0);
+            this.pbxScene.Name = "pbxScene";
+            this.pbxScene.Size = new System.Drawing.Size(350, 239);
+            this.pbxScene.TabIndex = 1;
+            this.pbxScene.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.panlogo);
+            this.Controls.Add(this.btnsheet);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnAddScene);
             this.Controls.Add(this.tbxSearch);
             this.Controls.Add(this.btnSide);
@@ -334,6 +419,10 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panlogo.ResumeLayout(false);
+            this.panlogo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxlogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOpenTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoneNum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxWebsite)).EndInit();
@@ -364,9 +453,16 @@
         private System.Windows.Forms.Label lblBookMark;
         private System.Windows.Forms.Button btnSide;
         private System.Windows.Forms.Button btnAddScene;
-        private System.Windows.Forms.Button btnstar;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnsheet;
+        private System.Windows.Forms.Panel panlogo;
+        private System.Windows.Forms.PictureBox pbxlogo;
+        private System.Windows.Forms.Label lbltitle;
+        private System.Windows.Forms.Button btnclosesheet;
+        private System.Windows.Forms.Button btnfeedback;
+        private System.Windows.Forms.Button btnclasstable;
+        private System.Windows.Forms.Button btnsaved;
         private System.Windows.Forms.Button btnguide;
-        private System.Windows.Forms.Button btnlocate;
     }
 }
 
