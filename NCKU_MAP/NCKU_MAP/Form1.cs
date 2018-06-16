@@ -80,11 +80,28 @@ namespace NCKU_MAP
         private void button1_Click(object sender, EventArgs e)
         {
             panel2.Visible = panlogo.Visible = true;
+            tbxSearch.Visible = false;
         }
 
         private void btnclosesheet_Click(object sender, EventArgs e)
         {
             panel2.Visible = panlogo.Visible = false;
+            tbxSearch.Visible = true;
+        }
+
+        private void btnguide_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnguide_MouseEnter(object sender, EventArgs e)
+        {
+            lblguide.Visible = true;
+        }
+
+        private void btnguide_MouseLeave(object sender, EventArgs e)
+        {
+            lblguide.Visible = false;
         }
     }
 }
