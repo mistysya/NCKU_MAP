@@ -31,7 +31,6 @@
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblguide = new System.Windows.Forms.Label();
             this.btnguide = new System.Windows.Forms.Button();
             this.lblType = new System.Windows.Forms.Label();
             this.lblBookMark = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.btnBookmark = new System.Windows.Forms.Button();
             this.pbxScene = new System.Windows.Forms.PictureBox();
             this.lblScene = new System.Windows.Forms.Label();
+            this.lbxSearchBar = new System.Windows.Forms.ListBox();
             this.btnSide = new System.Windows.Forms.Button();
             this.btnAddScene = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -58,6 +58,7 @@
             this.lbltitle = new System.Windows.Forms.Label();
             this.pbxlogo = new System.Windows.Forms.PictureBox();
             this.btnsheet = new System.Windows.Forms.Button();
+            this.lblguide = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOpenTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoneNum)).BeginInit();
@@ -71,13 +72,16 @@
             // 
             // tbxSearch
             // 
+            this.tbxSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tbxSearch.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tbxSearch.Location = new System.Drawing.Point(55, 12);
             this.tbxSearch.Name = "tbxSearch";
             this.tbxSearch.Size = new System.Drawing.Size(280, 35);
             this.tbxSearch.TabIndex = 1;
             this.tbxSearch.Text = "搜尋地點";
+            this.tbxSearch.TextChanged += new System.EventHandler(this.tbxSearch_TextChanged);
             this.tbxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyDown);
+            this.tbxSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyUp);
             // 
             // webBrowser1
             // 
@@ -112,33 +116,20 @@
             this.panel1.Size = new System.Drawing.Size(350, 680);
             this.panel1.TabIndex = 3;
             // 
-            // lblguide
-            // 
-            this.lblguide.AutoSize = true;
-            this.lblguide.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblguide.Location = new System.Drawing.Point(300, 300);
-            this.lblguide.Name = "lblguide";
-            this.lblguide.Size = new System.Drawing.Size(34, 17);
-            this.lblguide.TabIndex = 15;
-            this.lblguide.Text = "導航";
-            this.lblguide.Visible = false;
-            // 
             // btnguide
             // 
             this.btnguide.BackgroundImage = global::NCKU_MAP.Properties.Resources.guide_icon;
             this.btnguide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnguide.FlatAppearance.BorderSize = 0;
             this.btnguide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnguide.Font = new System.Drawing.Font("微軟正黑體", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnguide.Location = new System.Drawing.Point(287, 240);
             this.btnguide.Name = "btnguide";
             this.btnguide.Size = new System.Drawing.Size(60, 60);
             this.btnguide.TabIndex = 14;
-            this.btnguide.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnguide.UseVisualStyleBackColor = true;
-            this.btnguide.Click += new System.EventHandler(this.btnguide_Click);
-            this.btnguide.MouseEnter += new System.EventHandler(this.btnguide_MouseEnter);
-            this.btnguide.MouseLeave += new System.EventHandler(this.btnguide_MouseLeave);
+            this.btnguide.Click += new System.EventHandler(this.btnguide_Click_1);
+            this.btnguide.MouseEnter += new System.EventHandler(this.btnguide_MouseEnter_1);
+            this.btnguide.MouseLeave += new System.EventHandler(this.btnguide_MouseLeave_1);
             // 
             // lblType
             // 
@@ -282,6 +273,17 @@
             this.lblScene.TabIndex = 0;
             this.lblScene.Text = "SceneName";
             // 
+            // lbxSearchBar
+            // 
+            this.lbxSearchBar.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbxSearchBar.FormattingEnabled = true;
+            this.lbxSearchBar.ItemHeight = 24;
+            this.lbxSearchBar.Location = new System.Drawing.Point(56, 52);
+            this.lbxSearchBar.Name = "lbxSearchBar";
+            this.lbxSearchBar.Size = new System.Drawing.Size(280, 148);
+            this.lbxSearchBar.TabIndex = 16;
+            this.lbxSearchBar.Visible = false;
+            // 
             // btnSide
             // 
             this.btnSide.BackColor = System.Drawing.Color.White;
@@ -423,12 +425,24 @@
             this.btnsheet.UseVisualStyleBackColor = true;
             this.btnsheet.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblguide
+            // 
+            this.lblguide.AutoSize = true;
+            this.lblguide.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblguide.Location = new System.Drawing.Point(297, 300);
+            this.lblguide.Name = "lblguide";
+            this.lblguide.Size = new System.Drawing.Size(41, 20);
+            this.lblguide.TabIndex = 15;
+            this.lblguide.Text = "導航";
+            this.lblguide.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.lbxSearchBar);
             this.Controls.Add(this.panlogo);
             this.Controls.Add(this.btnsheet);
             this.Controls.Add(this.panel2);
@@ -485,6 +499,7 @@
         private System.Windows.Forms.Button btnclasstable;
         private System.Windows.Forms.Button btnsaved;
         private System.Windows.Forms.Button btnguide;
+        private System.Windows.Forms.ListBox lbxSearchBar;
         private System.Windows.Forms.Label lblguide;
     }
 }
