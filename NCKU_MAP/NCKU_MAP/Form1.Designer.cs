@@ -59,9 +59,10 @@
             this.pbxlogo = new System.Windows.Forms.PictureBox();
             this.btnsheet = new System.Windows.Forms.Button();
             this.panelNavigate = new System.Windows.Forms.Panel();
-            this.tbxStart = new System.Windows.Forms.TextBox();
-            this.tbxEnd = new System.Windows.Forms.TextBox();
             this.lbxNavigate = new System.Windows.Forms.ListBox();
+            this.tbxEnd = new System.Windows.Forms.TextBox();
+            this.tbxStart = new System.Windows.Forms.TextBox();
+            this.btncloseguide = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOpenTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoneNum)).BeginInit();
@@ -300,9 +301,13 @@
             // 
             // btnAddScene
             // 
-            this.btnAddScene.Location = new System.Drawing.Point(1156, 12);
+            this.btnAddScene.FlatAppearance.BorderSize = 0;
+            this.btnAddScene.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddScene.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnAddScene.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddScene.Location = new System.Drawing.Point(0, 80);
             this.btnAddScene.Name = "btnAddScene";
-            this.btnAddScene.Size = new System.Drawing.Size(80, 35);
+            this.btnAddScene.Size = new System.Drawing.Size(309, 70);
             this.btnAddScene.TabIndex = 5;
             this.btnAddScene.Text = "新增地點";
             this.btnAddScene.UseVisualStyleBackColor = true;
@@ -314,6 +319,7 @@
             this.panel2.Controls.Add(this.btnfeedback);
             this.panel2.Controls.Add(this.btnclasstable);
             this.panel2.Controls.Add(this.btnsaved);
+            this.panel2.Controls.Add(this.btnAddScene);
             this.panel2.Location = new System.Drawing.Point(740, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(309, 680);
@@ -339,7 +345,7 @@
             this.btnclasstable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnclasstable.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnclasstable.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnclasstable.Location = new System.Drawing.Point(0, 150);
+            this.btnclasstable.Location = new System.Drawing.Point(0, 220);
             this.btnclasstable.Name = "btnclasstable";
             this.btnclasstable.Size = new System.Drawing.Size(309, 70);
             this.btnclasstable.TabIndex = 2;
@@ -352,7 +358,7 @@
             this.btnsaved.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnsaved.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnsaved.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnsaved.Location = new System.Drawing.Point(0, 80);
+            this.btnsaved.Location = new System.Drawing.Point(0, 150);
             this.btnsaved.Name = "btnsaved";
             this.btnsaved.Size = new System.Drawing.Size(309, 70);
             this.btnsaved.TabIndex = 0;
@@ -423,19 +429,41 @@
             // 
             // panelNavigate
             // 
-            this.panelNavigate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelNavigate.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panelNavigate.Controls.Add(this.btncloseguide);
             this.panelNavigate.Controls.Add(this.lbxNavigate);
             this.panelNavigate.Controls.Add(this.tbxEnd);
             this.panelNavigate.Controls.Add(this.tbxStart);
             this.panelNavigate.Location = new System.Drawing.Point(399, 0);
             this.panelNavigate.Name = "panelNavigate";
-            this.panelNavigate.Size = new System.Drawing.Size(363, 680);
+            this.panelNavigate.Size = new System.Drawing.Size(350, 680);
             this.panelNavigate.TabIndex = 17;
+            this.panelNavigate.Visible = false;
+            // 
+            // lbxNavigate
+            // 
+            this.lbxNavigate.FormattingEnabled = true;
+            this.lbxNavigate.ItemHeight = 12;
+            this.lbxNavigate.Location = new System.Drawing.Point(67, 145);
+            this.lbxNavigate.Name = "lbxNavigate";
+            this.lbxNavigate.Size = new System.Drawing.Size(212, 124);
+            this.lbxNavigate.TabIndex = 2;
+            this.lbxNavigate.Visible = false;
+            // 
+            // tbxEnd
+            // 
+            this.tbxEnd.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tbxEnd.Location = new System.Drawing.Point(67, 110);
+            this.tbxEnd.Name = "tbxEnd";
+            this.tbxEnd.Size = new System.Drawing.Size(212, 29);
+            this.tbxEnd.TabIndex = 1;
+            this.tbxEnd.TextChanged += new System.EventHandler(this.tbxSearch_TextChanged);
+            this.tbxEnd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyUp);
             // 
             // tbxStart
             // 
             this.tbxStart.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbxStart.Location = new System.Drawing.Point(67, 25);
+            this.tbxStart.Location = new System.Drawing.Point(67, 55);
             this.tbxStart.Name = "tbxStart";
             this.tbxStart.Size = new System.Drawing.Size(212, 29);
             this.tbxStart.TabIndex = 0;
@@ -444,25 +472,19 @@
             this.tbxStart.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxStart_KeyDown);
             this.tbxStart.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyUp);
             // 
-            // tbxEnd
+            // btncloseguide
             // 
-            this.tbxEnd.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tbxEnd.Location = new System.Drawing.Point(67, 80);
-            this.tbxEnd.Name = "tbxEnd";
-            this.tbxEnd.Size = new System.Drawing.Size(212, 29);
-            this.tbxEnd.TabIndex = 1;
-            this.tbxEnd.TextChanged += new System.EventHandler(this.tbxSearch_TextChanged);
-            this.tbxEnd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyUp);
-            // 
-            // lbxNavigate
-            // 
-            this.lbxNavigate.FormattingEnabled = true;
-            this.lbxNavigate.ItemHeight = 12;
-            this.lbxNavigate.Location = new System.Drawing.Point(67, 116);
-            this.lbxNavigate.Name = "lbxNavigate";
-            this.lbxNavigate.Size = new System.Drawing.Size(212, 124);
-            this.lbxNavigate.TabIndex = 2;
-            this.lbxNavigate.Visible = false;
+            this.btncloseguide.FlatAppearance.BorderSize = 0;
+            this.btncloseguide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncloseguide.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncloseguide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btncloseguide.Location = new System.Drawing.Point(300, 0);
+            this.btncloseguide.Name = "btncloseguide";
+            this.btncloseguide.Size = new System.Drawing.Size(50, 50);
+            this.btncloseguide.TabIndex = 3;
+            this.btncloseguide.Text = "X";
+            this.btncloseguide.UseVisualStyleBackColor = true;
+            this.btncloseguide.Click += new System.EventHandler(this.btncloseguide_Click);
             // 
             // Form1
             // 
@@ -475,7 +497,6 @@
             this.Controls.Add(this.panlogo);
             this.Controls.Add(this.btnsheet);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.btnAddScene);
             this.Controls.Add(this.tbxSearch);
             this.Controls.Add(this.btnSide);
             this.Controls.Add(this.panel1);
@@ -536,6 +557,7 @@
         private System.Windows.Forms.TextBox tbxEnd;
         private System.Windows.Forms.TextBox tbxStart;
         private System.Windows.Forms.ListBox lbxNavigate;
+        private System.Windows.Forms.Button btncloseguide;
     }
 }
 

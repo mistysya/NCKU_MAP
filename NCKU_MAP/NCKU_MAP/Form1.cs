@@ -76,8 +76,10 @@ namespace NCKU_MAP
         private void btnguide_Click(object sender, EventArgs e)
         {
             panelNavigate.Location = new Point(0, 0);
+            panelNavigate.Visible = true;
             tbxEnd.Text = lblScene.Text;
             lbxS = lbxNavigate;
+            btnSide.Visible = false;
         }
         private void tbxStart_KeyDown(object sender, KeyEventArgs e)
         {
@@ -293,5 +295,10 @@ namespace NCKU_MAP
             }
         }
 
+        private void btncloseguide_Click(object sender, EventArgs e)
+        {
+            panelNavigate.Visible = false;
+            btnSide.Visible = true;
+        }
     }
 }
