@@ -18,6 +18,8 @@ namespace NCKU_MAP
     public partial class Form1 : Form
     {
         public Form2 f2 = new Form2();
+        private TextBox tbxS;
+        private ListBox lbxS;
         public Form1()
         {
             InitializeComponent();
@@ -34,13 +36,11 @@ namespace NCKU_MAP
             this.webBrowser1.Url = new Uri(fullPath); // show map on webBrowser1
             webBrowser1.ObjectForScripting = this;
             panel2.Dock = DockStyle.Left;
+            panelNavigate.Location = new Point(-panelNavigate.Width, 0); // initiallize sidebar location
             panlogo.Location = new Point(0, 0);
-            //importDatabase();
-            //cbxSearchBarImportData();
-            //tbxSearchBarImportDate();
+            lbxS = lbxSearchBar;
+            //this.webBrowser1.Document.InvokeScript("calcRoute");
         }
-
-
         private void btnSide_Click(object sender, EventArgs e)
         {
             if(panel1.Right == 0) // show sideButton
@@ -63,74 +63,28 @@ namespace NCKU_MAP
             f2.Show();
             this.webBrowser1.Document.InvokeScript("setAddMarker");
         }
-
-        public void UpdateLatLng(double lat, double lng)
-        {
-            f2.UpdateLatLng(lat, lng);
-            //MessageBox.Show("You did it!", "UpdateLatLng");
-        }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             panel2.Visible = panlogo.Visible = true;
-            tbxSearch.Visible = false;
         }
 
         private void btnclosesheet_Click(object sender, EventArgs e)
         {
             panel2.Visible = panlogo.Visible = false;
-            tbxSearch.Visible = true;
         }
+        private void btnguide_Click(object sender, EventArgs e)
+        {
+            panelNavigate.Location = new Point(0, 0);
+            tbxEnd.Text = lblScene.Text;
+            lbxS = lbxNavigate;
+        }
+        private void tbxStart_KeyDown(object sender, KeyEventArgs e)
+        {
 
-        /*
-        private void cbxSearchBarImportData()
-        {
-            cbxSearchBar.DataSource = ds.Tables["SceneInfo"];
-            cbxSearchBar.DisplayMember = "SceneName";
-        }*/
-        /*
-        private void tbxSearchBarImportDate()
-        {
-            //AutoCompleteStringCollection autoData = new AutoCompleteStringCollection();
-            AutoCompleteStringCollection acc = new AutoCompleteStringCollection();//宣告acc為字串集合器
-            SqlConnection cn = new SqlConnection();
-            cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
-                "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
-                "Integrated Security=True";
-            cn.Open();
-            string sqlstr = "SELECT SceneName FROM SceneInfo";
-            SqlCommand cmd = new SqlCommand(sqlstr, cn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while(reader.Read())
-            {
-                acc.Add(reader.GetString(0));
-            }
-            reader.Close();
-            /*foreach (DataRow dr in ds)
-            DataRow[] dr = hw2DataSet.Communication.Select();//宣告DataRow物件陣列，並用Select指令將資料表存入
-            for (int i = 0; i < dr.Length; i++)
-            {
-                acc.Add(dr[i][comboBox1.SelectedItem.ToString()].ToString().Trim());//將指定欄位內的資料值加入字串集合器
-            }*//*
-            tbxSearch.AutoCompleteCustomSource = acc;//將textBox1的AutoCompleteCustomSource屬性設定為acc
         }
-    */
-    /*
-        private void importDatabase()
-        {
-            SqlConnection cn = new SqlConnection();
-            cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
-                "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
-                "Integrated Security=True";
-            ds = new DataSet();
-            SqlDataAdapter daCategory = new SqlDataAdapter("SELECT * FROM SceneInfo", cn);
-            daCategory.Fill(ds, "SceneInfo");
-        }
-        private DataSet ds;
-        */
         void FindLocation(string find)
         {
-            lbxSearchBar.Visible = false;
             try
             {
                 SqlConnection cn = new SqlConnection();
@@ -176,46 +130,59 @@ namespace NCKU_MAP
         }
         private void tbxSearch_KeyUp(object sender, KeyEventArgs e)
         {
-            if (tbxSearch.Text == "")
+            TextBox eObj = sender as TextBox;
+            tbxS = eObj;
+            if (eObj.Name == "tbxSearch")
             {
-                tbxSearch.Select(tbxSearch.Text.Length, 1);
-                lbxSearchBar.Visible = false;
+                lbxS = lbxSearchBar;
+            }
+            else if (eObj.Name == "tbxEnd" || eObj.Name == "tbxStart")
+            {
+                lbxS = lbxNavigate;
+            }
+            else;
+            if (tbxS.Text == "")
+            {
+                tbxS.Select(tbxS.Text.Length, 1);
+                lbxS.Visible = false;
                 return;
             }
             // Press Up & Left
             if(e.KeyCode == Keys.Up)
             {
-                if (lbxSearchBar.SelectedIndex > -1)
+                if (lbxS.SelectedIndex > -1)
                 {
-                    lbxSearchBar.SelectedIndex--;
-                    tbxSearch.Select(tbxSearch.Text.Length, 1);
+                    lbxS.SelectedIndex--;
+                    tbxS.Select(tbxS.Text.Length, 1);
                 }
             }
             // Press Down & Right
             else if (e.KeyCode == Keys.Down)
             {
-                if (lbxSearchBar.SelectedIndex < lbxSearchBar.Items.Count - 1)
+                if (lbxS.SelectedIndex < lbxS.Items.Count - 1)
                 {
-                    lbxSearchBar.SelectedIndex++;
-                    tbxSearch.Select(tbxSearch.Text.Length, 1);
+                    lbxS.SelectedIndex++;
+                    tbxS.Select(tbxS.Text.Length, 1);
                 }
             }
         }
         private void tbxSearch_TextChanged(object sender, EventArgs e)
         {
+            TextBox eObj = sender as TextBox;
+            tbxS = eObj;
             // IList<string> autocompleteResult = PredicSearch(tbxSearch.Text);
-            PredictionInfo pred = new PredictionInfo(tbxSearch.Text);
+            PredictionInfo pred = new PredictionInfo(tbxS.Text);
             List<SceneInfo> predList = pred.GetList(5);
             //MessageBox.Show(predList.Count.ToString() + " " + tbxSearch.Text);
             if (predList.Count > 0)
             {
-                lbxSearchBar.DataSource = predList;
-                lbxSearchBar.DisplayMember = "SceneName";
-                lbxSearchBar.Visible = true;
-                lbxSearchBar.SelectedIndex = -1;
+                lbxS.DataSource = predList;
+                lbxS.DisplayMember = "SceneName";
+                lbxS.Visible = true;
+                lbxS.SelectedIndex = -1;
             }
             else
-                lbxSearchBar.Visible = false;
+                lbxS.Visible = false;
         }
         public class SceneInfo : IComparable
         {
@@ -326,36 +293,5 @@ namespace NCKU_MAP
             }
         }
 
-        private void btnguide_Click_1(object sender, EventArgs e)
-        {
-            panel1.Visible = false;
-            btnSide.Visible = false;
-            tbxSearch.Visible = false;
-            panel3.Dock = DockStyle.Left;
-            panel3.Visible = true;
-            tbxgoal.Text = lblScene.Text;
-            System.Drawing.Drawing2D.GraphicsPath aCircle = new System.Drawing.Drawing2D.GraphicsPath();
-            aCircle.AddEllipse(new Rectangle(0, 0, 50, 50));
-            btnstartguide.Region = new Region(aCircle);
-        }
-
-        private void btnguide_MouseEnter_1(object sender, EventArgs e)
-        {
-            lblguide.Visible = true;
-        }
-
-        private void btnguide_MouseLeave_1(object sender, EventArgs e)
-        {
-            lblguide.Visible = false;
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            panel3.Visible = false;
-            panel1.Visible = true;
-            btnSide.Visible = true;
-            tbxSearch.Visible = true;
-
-        }
     }
 }

@@ -58,7 +58,10 @@
             this.lbltitle = new System.Windows.Forms.Label();
             this.pbxlogo = new System.Windows.Forms.PictureBox();
             this.btnsheet = new System.Windows.Forms.Button();
-            this.lblguide = new System.Windows.Forms.Label();
+            this.panelNavigate = new System.Windows.Forms.Panel();
+            this.tbxStart = new System.Windows.Forms.TextBox();
+            this.tbxEnd = new System.Windows.Forms.TextBox();
+            this.lbxNavigate = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOpenTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoneNum)).BeginInit();
@@ -68,6 +71,7 @@
             this.panel2.SuspendLayout();
             this.panlogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxlogo)).BeginInit();
+            this.panelNavigate.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbxSearch
@@ -95,7 +99,6 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Controls.Add(this.lblguide);
             this.panel1.Controls.Add(this.btnguide);
             this.panel1.Controls.Add(this.lblType);
             this.panel1.Controls.Add(this.lblBookMark);
@@ -127,9 +130,7 @@
             this.btnguide.Size = new System.Drawing.Size(60, 60);
             this.btnguide.TabIndex = 14;
             this.btnguide.UseVisualStyleBackColor = true;
-            this.btnguide.Click += new System.EventHandler(this.btnguide_Click_1);
-            this.btnguide.MouseEnter += new System.EventHandler(this.btnguide_MouseEnter_1);
-            this.btnguide.MouseLeave += new System.EventHandler(this.btnguide_MouseLeave_1);
+            this.btnguide.Click += new System.EventHandler(this.btnguide_Click);
             // 
             // lblType
             // 
@@ -278,7 +279,7 @@
             this.lbxSearchBar.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbxSearchBar.FormattingEnabled = true;
             this.lbxSearchBar.ItemHeight = 24;
-            this.lbxSearchBar.Location = new System.Drawing.Point(56, 52);
+            this.lbxSearchBar.Location = new System.Drawing.Point(55, 49);
             this.lbxSearchBar.Name = "lbxSearchBar";
             this.lbxSearchBar.Size = new System.Drawing.Size(280, 148);
             this.lbxSearchBar.TabIndex = 16;
@@ -299,13 +300,9 @@
             // 
             // btnAddScene
             // 
-            this.btnAddScene.FlatAppearance.BorderSize = 0;
-            this.btnAddScene.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddScene.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnAddScene.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddScene.Location = new System.Drawing.Point(0, 80);
+            this.btnAddScene.Location = new System.Drawing.Point(1156, 12);
             this.btnAddScene.Name = "btnAddScene";
-            this.btnAddScene.Size = new System.Drawing.Size(309, 70);
+            this.btnAddScene.Size = new System.Drawing.Size(80, 35);
             this.btnAddScene.TabIndex = 5;
             this.btnAddScene.Text = "新增地點";
             this.btnAddScene.UseVisualStyleBackColor = true;
@@ -317,7 +314,6 @@
             this.panel2.Controls.Add(this.btnfeedback);
             this.panel2.Controls.Add(this.btnclasstable);
             this.panel2.Controls.Add(this.btnsaved);
-            this.panel2.Controls.Add(this.btnAddScene);
             this.panel2.Location = new System.Drawing.Point(740, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(309, 680);
@@ -343,7 +339,7 @@
             this.btnclasstable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnclasstable.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnclasstable.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnclasstable.Location = new System.Drawing.Point(0, 220);
+            this.btnclasstable.Location = new System.Drawing.Point(0, 150);
             this.btnclasstable.Name = "btnclasstable";
             this.btnclasstable.Size = new System.Drawing.Size(309, 70);
             this.btnclasstable.TabIndex = 2;
@@ -356,7 +352,7 @@
             this.btnsaved.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnsaved.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnsaved.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnsaved.Location = new System.Drawing.Point(0, 150);
+            this.btnsaved.Location = new System.Drawing.Point(0, 80);
             this.btnsaved.Name = "btnsaved";
             this.btnsaved.Size = new System.Drawing.Size(309, 70);
             this.btnsaved.TabIndex = 0;
@@ -425,16 +421,48 @@
             this.btnsheet.UseVisualStyleBackColor = true;
             this.btnsheet.Click += new System.EventHandler(this.button1_Click);
             // 
-            // lblguide
+            // panelNavigate
             // 
-            this.lblguide.AutoSize = true;
-            this.lblguide.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblguide.Location = new System.Drawing.Point(297, 300);
-            this.lblguide.Name = "lblguide";
-            this.lblguide.Size = new System.Drawing.Size(41, 20);
-            this.lblguide.TabIndex = 15;
-            this.lblguide.Text = "導航";
-            this.lblguide.Visible = false;
+            this.panelNavigate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelNavigate.Controls.Add(this.lbxNavigate);
+            this.panelNavigate.Controls.Add(this.tbxEnd);
+            this.panelNavigate.Controls.Add(this.tbxStart);
+            this.panelNavigate.Location = new System.Drawing.Point(399, 0);
+            this.panelNavigate.Name = "panelNavigate";
+            this.panelNavigate.Size = new System.Drawing.Size(363, 680);
+            this.panelNavigate.TabIndex = 17;
+            // 
+            // tbxStart
+            // 
+            this.tbxStart.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tbxStart.Location = new System.Drawing.Point(67, 25);
+            this.tbxStart.Name = "tbxStart";
+            this.tbxStart.Size = new System.Drawing.Size(212, 29);
+            this.tbxStart.TabIndex = 0;
+            this.tbxStart.Text = "起始地點";
+            this.tbxStart.TextChanged += new System.EventHandler(this.tbxSearch_TextChanged);
+            this.tbxStart.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxStart_KeyDown);
+            this.tbxStart.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyUp);
+            // 
+            // tbxEnd
+            // 
+            this.tbxEnd.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tbxEnd.Location = new System.Drawing.Point(67, 80);
+            this.tbxEnd.Name = "tbxEnd";
+            this.tbxEnd.Size = new System.Drawing.Size(212, 29);
+            this.tbxEnd.TabIndex = 1;
+            this.tbxEnd.TextChanged += new System.EventHandler(this.tbxSearch_TextChanged);
+            this.tbxEnd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyUp);
+            // 
+            // lbxNavigate
+            // 
+            this.lbxNavigate.FormattingEnabled = true;
+            this.lbxNavigate.ItemHeight = 12;
+            this.lbxNavigate.Location = new System.Drawing.Point(67, 116);
+            this.lbxNavigate.Name = "lbxNavigate";
+            this.lbxNavigate.Size = new System.Drawing.Size(212, 124);
+            this.lbxNavigate.TabIndex = 2;
+            this.lbxNavigate.Visible = false;
             // 
             // Form1
             // 
@@ -442,10 +470,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.panelNavigate);
             this.Controls.Add(this.lbxSearchBar);
             this.Controls.Add(this.panlogo);
             this.Controls.Add(this.btnsheet);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.btnAddScene);
             this.Controls.Add(this.tbxSearch);
             this.Controls.Add(this.btnSide);
             this.Controls.Add(this.panel1);
@@ -464,6 +494,8 @@
             this.panlogo.ResumeLayout(false);
             this.panlogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxlogo)).EndInit();
+            this.panelNavigate.ResumeLayout(false);
+            this.panelNavigate.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -500,7 +532,10 @@
         private System.Windows.Forms.Button btnsaved;
         private System.Windows.Forms.Button btnguide;
         private System.Windows.Forms.ListBox lbxSearchBar;
-        private System.Windows.Forms.Label lblguide;
+        private System.Windows.Forms.Panel panelNavigate;
+        private System.Windows.Forms.TextBox tbxEnd;
+        private System.Windows.Forms.TextBox tbxStart;
+        private System.Windows.Forms.ListBox lbxNavigate;
     }
 }
 
