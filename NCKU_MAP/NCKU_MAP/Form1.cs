@@ -18,6 +18,7 @@ namespace NCKU_MAP
     public partial class Form1 : Form
     {
         public Form2 f2 = new Form2();
+        public Form3 f3 = new Form3();
         private TextBox tbxS;
         private ListBox lbxS;
         public Form1()
@@ -67,11 +68,13 @@ namespace NCKU_MAP
         private void button1_Click(object sender, EventArgs e)
         {
             panel2.Visible = panlogo.Visible = true;
+            tbxSearch.Visible = false;
         }
 
         private void btnclosesheet_Click(object sender, EventArgs e)
         {
             panel2.Visible = panlogo.Visible = false;
+            tbxSearch.Visible = true;
         }
         private void btnguide_Click(object sender, EventArgs e)
         {
@@ -299,6 +302,12 @@ namespace NCKU_MAP
         {
             panelNavigate.Visible = false;
             btnSide.Visible = true;
+        }
+
+        private void btnclasstable_Click(object sender, EventArgs e)
+        {
+            f3 = new Form3();
+            f3.Show();
         }
     }
 }

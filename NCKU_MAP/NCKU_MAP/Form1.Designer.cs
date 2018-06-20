@@ -351,6 +351,7 @@
             this.btnclasstable.TabIndex = 2;
             this.btnclasstable.Text = "課表地圖";
             this.btnclasstable.UseVisualStyleBackColor = true;
+            this.btnclasstable.Click += new System.EventHandler(this.btnclasstable_Click);
             // 
             // btnsaved
             // 
