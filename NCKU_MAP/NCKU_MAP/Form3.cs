@@ -149,8 +149,9 @@ namespace NCKU_MAP
                 tbxplace.DataBindings.Add("Text", ds, "class.地點");
                 bm = this.BindingContext[ds, "class"];
 
+                string sqlstr = "SELECT 課表id FROM class where 課表id = " + tempnum.ToString();
                 //if(tempbtn.Text == "")
-                    Edit("INSERT INTO class(課名,地點,課程id)VALUES(N'" +
+                Edit("INSERT INTO class(課名,地點,課程id)VALUES(N'" +
                         tbxclass.Text.Replace("'", "''") + "',N'" +
                         tbxplace.Text.Replace("'", "''") + "'," +
                         tempnum + ")");
