@@ -59,10 +59,11 @@
             this.pbxlogo = new System.Windows.Forms.PictureBox();
             this.btnsheet = new System.Windows.Forms.Button();
             this.panelNavigate = new System.Windows.Forms.Panel();
+            this.btnNavigateFind = new System.Windows.Forms.Button();
+            this.btncloseguide = new System.Windows.Forms.Button();
             this.lbxNavigate = new System.Windows.Forms.ListBox();
             this.tbxEnd = new System.Windows.Forms.TextBox();
             this.tbxStart = new System.Windows.Forms.TextBox();
-            this.btncloseguide = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOpenTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoneNum)).BeginInit();
@@ -430,6 +431,7 @@
             // panelNavigate
             // 
             this.panelNavigate.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panelNavigate.Controls.Add(this.btnNavigateFind);
             this.panelNavigate.Controls.Add(this.btncloseguide);
             this.panelNavigate.Controls.Add(this.lbxNavigate);
             this.panelNavigate.Controls.Add(this.tbxEnd);
@@ -439,6 +441,30 @@
             this.panelNavigate.Size = new System.Drawing.Size(350, 680);
             this.panelNavigate.TabIndex = 17;
             this.panelNavigate.Visible = false;
+            // 
+            // btnNavigateFind
+            // 
+            this.btnNavigateFind.Location = new System.Drawing.Point(286, 110);
+            this.btnNavigateFind.Name = "btnNavigateFind";
+            this.btnNavigateFind.Size = new System.Drawing.Size(30, 29);
+            this.btnNavigateFind.TabIndex = 4;
+            this.btnNavigateFind.Text = "找";
+            this.btnNavigateFind.UseVisualStyleBackColor = true;
+            this.btnNavigateFind.Click += new System.EventHandler(this.btnNavigateFind_Click);
+            // 
+            // btncloseguide
+            // 
+            this.btncloseguide.FlatAppearance.BorderSize = 0;
+            this.btncloseguide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncloseguide.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncloseguide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btncloseguide.Location = new System.Drawing.Point(300, 0);
+            this.btncloseguide.Name = "btncloseguide";
+            this.btncloseguide.Size = new System.Drawing.Size(50, 50);
+            this.btncloseguide.TabIndex = 3;
+            this.btncloseguide.Text = "X";
+            this.btncloseguide.UseVisualStyleBackColor = true;
+            this.btncloseguide.Click += new System.EventHandler(this.btncloseguide_Click);
             // 
             // lbxNavigate
             // 
@@ -458,6 +484,7 @@
             this.tbxEnd.Size = new System.Drawing.Size(212, 29);
             this.tbxEnd.TabIndex = 1;
             this.tbxEnd.TextChanged += new System.EventHandler(this.tbxSearch_TextChanged);
+            this.tbxEnd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxStart_KeyDown);
             this.tbxEnd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyUp);
             // 
             // tbxStart
@@ -471,20 +498,6 @@
             this.tbxStart.TextChanged += new System.EventHandler(this.tbxSearch_TextChanged);
             this.tbxStart.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxStart_KeyDown);
             this.tbxStart.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyUp);
-            // 
-            // btncloseguide
-            // 
-            this.btncloseguide.FlatAppearance.BorderSize = 0;
-            this.btncloseguide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncloseguide.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncloseguide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btncloseguide.Location = new System.Drawing.Point(300, 0);
-            this.btncloseguide.Name = "btncloseguide";
-            this.btncloseguide.Size = new System.Drawing.Size(50, 50);
-            this.btncloseguide.TabIndex = 3;
-            this.btncloseguide.Text = "X";
-            this.btncloseguide.UseVisualStyleBackColor = true;
-            this.btncloseguide.Click += new System.EventHandler(this.btncloseguide_Click);
             // 
             // Form1
             // 
@@ -558,6 +571,7 @@
         private System.Windows.Forms.TextBox tbxStart;
         private System.Windows.Forms.ListBox lbxNavigate;
         private System.Windows.Forms.Button btncloseguide;
+        private System.Windows.Forms.Button btnNavigateFind;
     }
 }
 

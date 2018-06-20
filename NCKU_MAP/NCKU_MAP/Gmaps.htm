@@ -25,24 +25,84 @@
       var curLatLng;
       var mAdd;
       var isAddMarker = false;
+      var directionsDisplay;
+      var directionsService;
       function initMap() {
-        var directionsDisplay = new google.maps.DirectionsRenderer();
-        var directionsService = new google.maps.DirectionsService();
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 22.9920689, lng: 120.2224226},
           zoom: 15
         });
-        /*
-        google.maps.event.addListener(mAdd, 'mouseup', function() {
-          LatLng = mAdd.getPosition();
-          window.external.UpdateLatLng(LatLng.lat(), LatLng.lng());
-          //$("#NowLatLng").html("【移動標記點後的位置】緯度：" + LatLng.lat() + "經度：" + LatLng.lng());
-        });*/
-
+        directionsDisplay = new google.maps.DirectionsRenderer();
+        directionsService = new google.maps.DirectionsService();
         directionsDisplay.setMap(map);
-        calcRoute(directionsDisplay, directionsService);
       }
-      function calcRoute(directionsDisplay, directionsService) {
+      function getLat(input)
+      {
+          var tLatLng;
+          var rValue;
+          address = input;
+          geocoder = new google.maps.Geocoder();
+          geocoder.geocode(
+           { 'address': address },
+             function (results, status) {
+                 if (status == google.maps.GeocoderStatus.OK) {
+                     rValue = results[0].geometry.location.lat();
+                     callback(rValue);
+                 }
+             }
+          )
+          alert(rValue);
+          return rValue;
+      }
+      function getLng(input)
+      {
+          var tLatLng;
+          var rValue;
+          return rValue;
+          address = input;
+          geocoder = new google.maps.Geocoder();
+          geocoder.geocode(
+           { 'address': address },
+             function (results, status) {
+                 if (status == google.maps.GeocoderStatus.OK) {
+                     rValue = results[0].geometry.location;
+                 }
+             }
+          )
+          tLatLng = rValue.lng();
+          alert(tLatLng);
+          return tLatLng;
+      }
+      function callback(input)
+      {
+          return input;
+      }
+      function removeRoute()
+      {
+          alert("close route");
+          directionsDisplay.set('directions', null);
+      }
+      function calcRoute(slat, slng, elat, elng) {
+          var start;
+          var end;
+          if (slat == "NOTINDATABASE")
+              start = slng;
+          else
+          {
+              slat = parseFloat(slat);
+              slng = parseFloat(slng);
+              start = new google.maps.LatLng(slat, slng);
+          }
+          if (elat == "NOTINDATABASE")
+              end = elng;
+          else
+          {
+              elat = parseFloat(elat);
+              elng = parseFloat(elng);
+              end = new google.maps.LatLng(elat, elng);
+          }
+        
+        /*
         var tLatLng;
         address = "成功大學中正堂";
         geocoder = new google.maps.Geocoder();
@@ -53,7 +113,7 @@
                    tLatLng = results[0].geometry.location;
                }}
         )
-        var start = new google.maps.LatLng(tLatLng.lat(),tLatLng.lng());
+        
         //var start = tLatLng;
         var tLatLng;
         address = "成功大學醫學院";
@@ -65,17 +125,18 @@
                    tLatLng = results[0].geometry.location;
                }}
         )
-        var end = new google.maps.LatLng(tLatLng.lat(),tLatLng.lng());
+        var end = new google.maps.LatLng(23.0020674514951, 120.219575259277);
+        */
         //var end = tLatLng;
         var request = {
           origin: start,
           destination: end,
           travelMode: 'WALKING'
         };
-        directionsService.route(request, function(result, status) {
-          if (status == 'OK') {
-            directionsDisplay.setDirections(result);
-          }
+        directionsService.route(request, function (result, status) {
+            if (status == 'OK') {
+                directionsDisplay.setDirections(result);
+            }
         });
       }
       function setAddMarker(){

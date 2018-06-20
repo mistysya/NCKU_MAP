@@ -39,7 +39,6 @@ namespace NCKU_MAP
             panelNavigate.Location = new Point(-panelNavigate.Width, 0); // initiallize sidebar location
             panlogo.Location = new Point(0, 0);
             lbxS = lbxSearchBar;
-            //this.webBrowser1.Document.InvokeScript("calcRoute");
         }
         private void btnSide_Click(object sender, EventArgs e)
         {
@@ -73,6 +72,12 @@ namespace NCKU_MAP
         {
             panel2.Visible = panlogo.Visible = false;
         }
+        private void btncloseguide_Click(object sender, EventArgs e)
+        {
+            this.webBrowser1.Document.InvokeScript("removeRoute");
+            panelNavigate.Visible = false;
+            btnSide.Visible = true;
+        }
         private void btnguide_Click(object sender, EventArgs e)
         {
             panelNavigate.Location = new Point(0, 0);
@@ -80,10 +85,80 @@ namespace NCKU_MAP
             tbxEnd.Text = lblScene.Text;
             lbxS = lbxNavigate;
             btnSide.Visible = false;
+            lbxNavigate.Visible = false;
+            lbxSearchBar.Visible = false;
+        }
+        private void Navigate()
+        {
+            MessageBox.Show("Start search");
+            try
+            {
+                string[] naviSceneName = { tbxStart.Text, tbxEnd.Text };
+                string[] naviLatlng = new string[4];
+                SqlConnection cn = new SqlConnection();
+                cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
+                    "Integrated Security=True";
+                cn.Open();
+                for (int i = 0; i < 4; i++)
+                {
+                    try
+                    {
+                        string sqlstr;
+                        if (i % 2 == 0)
+                            sqlstr = "SELECT Latitude FROM SceneInfo where SceneName = N'" + naviSceneName[i / 2] + "'";
+                        else
+                            sqlstr = "SELECT Longitude FROM SceneInfo where SceneName = N'" + naviSceneName[i / 2] + "'";
+                        SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        reader.Read();
+                        if (reader.HasRows)
+                        {
+                            naviLatlng[i] = reader[0].ToString();
+                            reader.Close();
+                        }
+                        else
+                        {
+                            reader.Close();
+                            if (i % 2 == 0)
+                            {
+                                naviLatlng[i] = "NOTINDATABASE";
+                                naviLatlng[i + 1] = naviSceneName[i / 2];
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                this.webBrowser1.Document.InvokeScript("calcRoute", new Object[] { naviLatlng[0], naviLatlng[1], naviLatlng[2], naviLatlng[3] });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnNavigateFind_Click(object sender, EventArgs e)
+        {
+            if (tbxStart.Text != "" && tbxEnd.Text != "")
+                Navigate();
         }
         private void tbxStart_KeyDown(object sender, KeyEventArgs e)
         {
-
+            TextBox eObj = sender as TextBox;
+            tbxS = eObj;
+            if (e.KeyCode == Keys.Enter && !lblScene.Text.Equals("")) // press "Enter"
+            {
+                if (lbxNavigate.SelectedIndex >= 0)
+                {
+                    SceneInfo tmp = (SceneInfo)lbxNavigate.SelectedItem;
+                    tbxS.Text = tmp.sceneName_;
+                }
+                lbxNavigate.Visible = false; // dont show AutoComplete
+                if (tbxStart.Text != "" && tbxEnd.Text != "")
+                    Navigate();
+            }
         }
         void FindLocation(string find)
         {
@@ -128,6 +203,7 @@ namespace NCKU_MAP
                 btnSide.Location = new Point(panel1.Right, 0); // move sideButton
                 btnSide.Visible = true; // show sideButton
                 lblScene.Text = tbxSearch.Text; // update lblScene
+                lbxSearchBar.Visible = false; // dont show AutoComplete
             }
         }
         private void tbxSearch_KeyUp(object sender, KeyEventArgs e)
@@ -293,12 +369,6 @@ namespace NCKU_MAP
                     }
                 return result;
             }
-        }
-
-        private void btncloseguide_Click(object sender, EventArgs e)
-        {
-            panelNavigate.Visible = false;
-            btnSide.Visible = true;
-        }
+        }        
     }
 }
