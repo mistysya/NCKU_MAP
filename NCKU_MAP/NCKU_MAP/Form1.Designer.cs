@@ -64,6 +64,10 @@
             this.lbxNavigate = new System.Windows.Forms.ListBox();
             this.tbxEnd = new System.Windows.Forms.TextBox();
             this.tbxStart = new System.Windows.Forms.TextBox();
+            this.panelStoreList = new System.Windows.Forms.Panel();
+            this.btnStoreClose = new System.Windows.Forms.Button();
+            this.lbxStorelist = new System.Windows.Forms.ListBox();
+            this.lblStoreList = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOpenTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoneNum)).BeginInit();
@@ -74,6 +78,7 @@
             this.panlogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxlogo)).BeginInit();
             this.panelNavigate.SuspendLayout();
+            this.panelStoreList.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbxSearch
@@ -256,6 +261,7 @@
             this.btnBookmark.TabIndex = 2;
             this.btnBookmark.Text = "標";
             this.btnBookmark.UseVisualStyleBackColor = false;
+            this.btnBookmark.Click += new System.EventHandler(this.btnBookmark_Click);
             // 
             // pbxScene
             // 
@@ -501,12 +507,60 @@
             this.tbxStart.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxStart_KeyDown);
             this.tbxStart.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbxSearch_KeyUp);
             // 
+            // panelStoreList
+            // 
+            this.panelStoreList.BackColor = System.Drawing.Color.SteelBlue;
+            this.panelStoreList.Controls.Add(this.lblStoreList);
+            this.panelStoreList.Controls.Add(this.lbxStorelist);
+            this.panelStoreList.Controls.Add(this.btnStoreClose);
+            this.panelStoreList.Location = new System.Drawing.Point(353, 2);
+            this.panelStoreList.Name = "panelStoreList";
+            this.panelStoreList.Size = new System.Drawing.Size(350, 680);
+            this.panelStoreList.TabIndex = 18;
+            this.panelStoreList.Visible = false;
+            // 
+            // btnStoreClose
+            // 
+            this.btnStoreClose.FlatAppearance.BorderSize = 0;
+            this.btnStoreClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStoreClose.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStoreClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnStoreClose.Location = new System.Drawing.Point(300, 0);
+            this.btnStoreClose.Name = "btnStoreClose";
+            this.btnStoreClose.Size = new System.Drawing.Size(50, 50);
+            this.btnStoreClose.TabIndex = 3;
+            this.btnStoreClose.Text = "X";
+            this.btnStoreClose.UseVisualStyleBackColor = true;
+            this.btnStoreClose.Click += new System.EventHandler(this.btnStoreClose_Click);
+            // 
+            // lbxStorelist
+            // 
+            this.lbxStorelist.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbxStorelist.FormattingEnabled = true;
+            this.lbxStorelist.ItemHeight = 20;
+            this.lbxStorelist.Location = new System.Drawing.Point(28, 80);
+            this.lbxStorelist.Name = "lbxStorelist";
+            this.lbxStorelist.Size = new System.Drawing.Size(297, 524);
+            this.lbxStorelist.TabIndex = 4;
+            this.lbxStorelist.SelectedIndexChanged += new System.EventHandler(this.lbxStorelist_SelectedIndexChanged);
+            // 
+            // lblStoreList
+            // 
+            this.lblStoreList.AutoSize = true;
+            this.lblStoreList.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblStoreList.Location = new System.Drawing.Point(23, 25);
+            this.lblStoreList.Name = "lblStoreList";
+            this.lblStoreList.Size = new System.Drawing.Size(96, 34);
+            this.lblStoreList.TabIndex = 5;
+            this.lblStoreList.Text = "儲存點";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.panelStoreList);
             this.Controls.Add(this.panelNavigate);
             this.Controls.Add(this.lbxSearchBar);
             this.Controls.Add(this.panlogo);
@@ -532,6 +586,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxlogo)).EndInit();
             this.panelNavigate.ResumeLayout(false);
             this.panelNavigate.PerformLayout();
+            this.panelStoreList.ResumeLayout(false);
+            this.panelStoreList.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -574,6 +630,10 @@
         private System.Windows.Forms.ListBox lbxNavigate;
         private System.Windows.Forms.Button btncloseguide;
         private System.Windows.Forms.Button btnNavigateFind;
+        private System.Windows.Forms.Panel panelStoreList;
+        private System.Windows.Forms.ListBox lbxStorelist;
+        private System.Windows.Forms.Button btnStoreClose;
+        private System.Windows.Forms.Label lblStoreList;
     }
 }
 

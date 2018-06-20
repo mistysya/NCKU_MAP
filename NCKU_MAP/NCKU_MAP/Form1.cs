@@ -95,6 +95,27 @@ namespace NCKU_MAP
             lbxNavigate.Visible = false;
             lbxSearchBar.Visible = false;
         }
+        private void lbxStore_Load_Data()
+        {
+            SqlConnection cn = new SqlConnection();
+            cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
+                "Integrated Security=True";
+            cn.Open();
+            string sqlstr = "SELECT SceneName FROM SceneInfo where IsMark='1'";
+            SqlCommand cmd = new SqlCommand(sqlstr, cn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            lbxStorelist.BeginUpdate();
+            lbxStorelist.Items.Clear();
+            while(reader.Read())
+            {
+                MessageBox.Show(reader.GetString(0));
+                lbxStorelist.Items.Add(reader.GetString(0));
+            }
+            reader.Close();
+            cn.Close();
+            lbxStorelist.EndUpdate();
+        }
         private void Navigate()
         {
             MessageBox.Show("Start search");
@@ -203,6 +224,23 @@ namespace NCKU_MAP
                     SceneInfo tmp = (SceneInfo)lbxSearchBar.SelectedItem;
                     tbxSearch.Text = tmp.sceneName_;
                     FindLocation(tmp.sceneName_);
+                    SqlConnection cn = new SqlConnection();
+                    cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                        "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
+                        "Integrated Security=True";
+                    cn.Open();
+                    string sqlstr = "SELECT * FROM SceneInfo where SceneName = N'" + tmp.sceneName_ + "'";
+                    //SceneType,SceneDescript,Address,Website,PhoneNumber,OpenTime
+                    SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    lblType.Text = reader["SceneType"].ToString();
+                    tbxDescript.Text = reader["SceneDescript"].ToString();
+                    lblAddress.Text = reader["Address"].ToString();
+                    lblWebsite.Text = reader["Website"].ToString();
+                    lblPhoneNum.Text = reader["PhoneNumber"].ToString();
+                    lblOpenTime.Text = reader["OpenTime"].ToString();
+                    reader.Close();
                 }
                 else
                     this.webBrowser1.Document.InvokeScript("GetAddressMarker", new Object[] { tbxSearch.Text }); // call javascript to Search
@@ -386,7 +424,44 @@ namespace NCKU_MAP
 
         private void btnsaved_Click(object sender, EventArgs e)
         {
+            lbxStore_Load_Data();
+            panel2.Visible = panlogo.Visible = false;
+            panelStoreList.Location = new Point(0, 0);
+            panelStoreList.Visible = true;
+        }
 
+        private void btnStoreClose_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = panlogo.Visible = true;
+            panelStoreList.Visible = false;
+        }
+
+        private void btnBookmark_Click(object sender, EventArgs e)
+        {
+            Edit("UPDATE SceneInfo SET IsMark = 1 where SceneName = N'" + lblScene.Text + "'");
+        }
+        void Edit(string sqlstr)
+        {
+            try
+            {
+                SqlConnection cn = new SqlConnection();
+                cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
+                    "Integrated Security=True";
+                cn.Open();
+                SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void lbxStorelist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string curItem = lbxStorelist.SelectedItem.ToString();
+            FindLocation(curItem);
         }
     }
 }
