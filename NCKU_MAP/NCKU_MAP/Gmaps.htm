@@ -27,15 +27,30 @@
       var isAddMarker = false;
       var directionsDisplay;
       var directionsService;
+      var map;
+      var marker;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 22.9920689, lng: 120.2224226},
           zoom: 15
         });
+        marker = new google.maps.Marker({
+            position: { lat: 22.9920689, lng: 120.2224226 },
+            map: map
+        });
+        mAdd = new google.maps.Marker({
+            icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+            draggable: true,
+            position: { lat: 22.9920689, lng: 120.2224226 },
+            map: map
+        });
+        curLatLng = mAdd.getPosition();
+        marker.setVisible(false);
+        mAdd.setVisible(false);
         directionsDisplay = new google.maps.DirectionsRenderer();
         directionsService = new google.maps.DirectionsService();
         directionsDisplay.setMap(map);
-      }
+      }/*
       function getLat(input)
       {
           var tLatLng;
@@ -53,7 +68,7 @@
           )
           alert(rValue);
           return rValue;
-      }
+      }*//*
       function getLng(input)
       {
           var tLatLng;
@@ -72,11 +87,11 @@
           tLatLng = rValue.lng();
           alert(tLatLng);
           return tLatLng;
-      }
+      }*//*
       function callback(input)
       {
           return input;
-      }
+      }*/
       function removeRoute()
       {
           alert("close route");
@@ -139,41 +154,35 @@
             }
         });
       }
-      function setAddMarker(){
-        if(isAddMarker == true)
-          updataAddMarker();
-        else
-        {
-          mAdd = new google.maps.Marker({
-                         icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                         draggable:true,
-                         position: curLatLng,
-                         map: map
-                        });
+      function setAddMarker() {
+          mAdd.setVisible(true);
+          mAdd.setPosition(curLatLng)
           google.maps.event.addListener(mAdd, 'dragend', function(event) {
             LatLng = mAdd.getPosition();
             window.external.UpdateLatLng(LatLng.lat(), LatLng.lng());
-          } );
-          isAddMarker = true;
-        }
-      }
-      function updataAddMarker(){
-        mAdd.setPosition(curLatLng)
+          });
       }
       function Locate(lat, lng) {
+          marker.setVisible(true);
           lat = parseFloat(lat);
           lng = parseFloat(lng);
-          var centerLatlng = {lat: lat, lng: lng};
+          var centerLatlng = { lat: lat, lng: lng };
+          map.panTo(centerLatlng);
+          map.setZoom(15);
+          marker.setPosition(curLatLng);
+          /*
           map.setCenter(centerLatlng);
           var marker = new google.maps.Marker({
               position: centerLatlng,
               map: map
           });
+          */
           curLatLng = centerLatlng;
       }
       function GetAddressMarker(inputAdd) {//重新定位地圖位置與標記點位置
           //alert(‘inputAdd’);
           //address = $("#inputAdd").val();
+          marker.setVisible(true);
           address = inputAdd;
           geocoder = new google.maps.Geocoder();
           geocoder.geocode(
@@ -182,6 +191,10 @@
                if (status == google.maps.GeocoderStatus.OK) {
                    //console.log(results[0].geometry.location);
                    curLatLng = results[0].geometry.location;
+                   map.panTo(curLatLng);
+                   map.setZoom(15);
+                   marker.setPosition(curLatLng);
+                   /*
                    map.setCenter(curLatLng);  //將地圖中心定位到查詢結果
                    map = new google.maps.Map(document.getElementById('map'), {
                        //center: { lat: 22.9920689, lng: 120.2224226 },
@@ -192,6 +205,7 @@
                        position: curLatLng,
                        map: map
                    });
+                   */
                    //marker.setPosition(LatLng); //將標記點定位到查詢結果
                    //marker.setTitle(address); //重新設定標記點的title
                    //$("#SearchLatLng").html("【您輸入的地址位置】緯度：" + LatLng.lat() + "經度：" + LatLng.lng());

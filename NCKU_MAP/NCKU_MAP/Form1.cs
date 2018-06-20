@@ -41,6 +41,10 @@ namespace NCKU_MAP
             panlogo.Location = new Point(0, 0);
             lbxS = lbxSearchBar;
         }
+        public void UpdateLatLng(double lat, double lng)
+        {
+            f2.UpdateLatLng(lat, lng);
+        }
         private void btnSide_Click(object sender, EventArgs e)
         {
             if(panel1.Right == 0) // show sideButton
