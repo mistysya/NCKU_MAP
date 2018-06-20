@@ -195,7 +195,7 @@ namespace NCKU_MAP
             if (colorDialog1.ShowDialog() != DialogResult.Cancel)
             {
                 tempbtn.BackColor = colorDialog1.Color;
-                MessageBox.Show(tempbtn.BackColor.R.ToString() + " " + tempbtn.BackColor.R);
+                //MessageBox.Show(tempbtn.BackColor.R.ToString() + " " + tempbtn.BackColor.R);
                 try
                 {
                     string command = "UPDATE class SET A= " + tempbtn.BackColor.A + " where 課程id=" + tempnum.ToString();

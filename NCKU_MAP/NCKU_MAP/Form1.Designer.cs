@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -65,9 +66,9 @@
             this.tbxEnd = new System.Windows.Forms.TextBox();
             this.tbxStart = new System.Windows.Forms.TextBox();
             this.panelStoreList = new System.Windows.Forms.Panel();
-            this.btnStoreClose = new System.Windows.Forms.Button();
-            this.lbxStorelist = new System.Windows.Forms.ListBox();
             this.lblStoreList = new System.Windows.Forms.Label();
+            this.lbxStorelist = new System.Windows.Forms.ListBox();
+            this.btnStoreClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOpenTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoneNum)).BeginInit();
@@ -266,9 +267,11 @@
             // pbxScene
             // 
             this.pbxScene.BackColor = System.Drawing.Color.DarkRed;
+            this.pbxScene.Image = ((System.Drawing.Image)(resources.GetObject("pbxScene.Image")));
             this.pbxScene.Location = new System.Drawing.Point(0, 0);
             this.pbxScene.Name = "pbxScene";
             this.pbxScene.Size = new System.Drawing.Size(350, 239);
+            this.pbxScene.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxScene.TabIndex = 1;
             this.pbxScene.TabStop = false;
             // 
@@ -519,6 +522,27 @@
             this.panelStoreList.TabIndex = 18;
             this.panelStoreList.Visible = false;
             // 
+            // lblStoreList
+            // 
+            this.lblStoreList.AutoSize = true;
+            this.lblStoreList.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblStoreList.Location = new System.Drawing.Point(23, 25);
+            this.lblStoreList.Name = "lblStoreList";
+            this.lblStoreList.Size = new System.Drawing.Size(96, 34);
+            this.lblStoreList.TabIndex = 5;
+            this.lblStoreList.Text = "儲存點";
+            // 
+            // lbxStorelist
+            // 
+            this.lbxStorelist.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbxStorelist.FormattingEnabled = true;
+            this.lbxStorelist.ItemHeight = 20;
+            this.lbxStorelist.Location = new System.Drawing.Point(28, 80);
+            this.lbxStorelist.Name = "lbxStorelist";
+            this.lbxStorelist.Size = new System.Drawing.Size(297, 524);
+            this.lbxStorelist.TabIndex = 4;
+            this.lbxStorelist.SelectedIndexChanged += new System.EventHandler(this.lbxStorelist_SelectedIndexChanged);
+            // 
             // btnStoreClose
             // 
             this.btnStoreClose.FlatAppearance.BorderSize = 0;
@@ -532,27 +556,6 @@
             this.btnStoreClose.Text = "X";
             this.btnStoreClose.UseVisualStyleBackColor = true;
             this.btnStoreClose.Click += new System.EventHandler(this.btnStoreClose_Click);
-            // 
-            // lbxStorelist
-            // 
-            this.lbxStorelist.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lbxStorelist.FormattingEnabled = true;
-            this.lbxStorelist.ItemHeight = 20;
-            this.lbxStorelist.Location = new System.Drawing.Point(28, 80);
-            this.lbxStorelist.Name = "lbxStorelist";
-            this.lbxStorelist.Size = new System.Drawing.Size(297, 524);
-            this.lbxStorelist.TabIndex = 4;
-            this.lbxStorelist.SelectedIndexChanged += new System.EventHandler(this.lbxStorelist_SelectedIndexChanged);
-            // 
-            // lblStoreList
-            // 
-            this.lblStoreList.AutoSize = true;
-            this.lblStoreList.Font = new System.Drawing.Font("微軟正黑體", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblStoreList.Location = new System.Drawing.Point(23, 25);
-            this.lblStoreList.Name = "lblStoreList";
-            this.lblStoreList.Size = new System.Drawing.Size(96, 34);
-            this.lblStoreList.TabIndex = 5;
-            this.lblStoreList.Text = "儲存點";
             // 
             // Form1
             // 
