@@ -115,26 +115,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MapInfo.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MapInfo_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>MapInfo.mdf</DependentUpon>
-    </Content>
     <None Include="NCKU_logo.png" />
     <None Include="time_icon.png" />
     <None Include="phone_icon.png" />
     <None Include="website-icon.png" />
     <None Include="address_icon.png" />
     <None Include="function_icon.png" />
-    <Content Include="curriculums.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="curriculums_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>curriculums.mdf</DependentUpon>
-    </Content>
     <Content Include="Gmaps.htm" />
   </ItemGroup>
   <ItemGroup>

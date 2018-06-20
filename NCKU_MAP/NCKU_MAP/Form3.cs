@@ -20,21 +20,51 @@ namespace NCKU_MAP
         public Form3()
         {
             InitializeComponent();
+            for (int i = 0; i < 66; i++)
+            {
+                table[i] = new Button();
+            }
         }
-        BindingManagerBase bm;
 
         private void btnnew_Click(object sender, EventArgs e)
         {
-            show_curriculum();
+            show_curriculum(0);//edit button call
+            readfromdatabase(0);
         }
 
-        private void show_curriculum()
+        private void btnview_Click(object sender, EventArgs e)
+        {
+            show_curriculum(1);//view button call
+            readfromdatabase(1);
+            gbxnewclass.Visible = false;
+            for (int i = 0; i < 66; i++)
+            {
+                table[i].Visible = true;
+            }
+        }
+
+        private void btndelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("確認刪除課表?", "提醒", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                for (int i = 0; i < 66; i++)
+                    Edit("DELETE FROM class WHERE 課程id=" + i.ToString());
+                for (int i = 0; i < 66; i++)
+                {
+                    table[i].Visible = false;
+                }
+            }
+            gbxnewclass.Visible = false;
+        }
+
+        private void show_curriculum(int sel)
         {
             int num = 0;
             for (int i = 0; i < 6; i++)
                 for (int j = 0; j < 11; j++)
                 {
-                    table[num] = new Button();
+                    //table[num] = new Button();
                     if (num < 11)
                     {
                         table[num].SetBounds(200 + 60 * i, 20 + 60 * j, 62, 62);
@@ -43,7 +73,7 @@ namespace NCKU_MAP
                             table[num].Text = num.ToString();
                     }
                     else
-                        table[num].SetBounds(140 + 120 * i, 20 + 60 * j, 122, 62); //fix the gap
+                        table[num].SetBounds(140 + 120 * i, 20 + 60 * j, 122, 62); //fix the gap between buttons
                     switch (num)
                     {
                         case 11:
@@ -64,8 +94,68 @@ namespace NCKU_MAP
                     table[num].FlatAppearance.BorderSize = 2;
                     Controls.Add(table[num]);
                     table[num].Click += new System.EventHandler(this.Button_Click);//let all buttons share the same function
+                    //MessageBox.Show(sel.ToString() + " " + i.ToString());
+                    if (sel == 1)
+                        table[num].Enabled = false;
+                    else if (sel == 0 && (num >= 12 && num <= 21) || (num >= 23 && num <= 32) || (num >= 34 && num <= 43) || (num >= 45 && num <= 54) || (num >= 56 && num <= 65))
+                    {
+                        table[num].Enabled = true;
+                    }
+                    //else if ((i >= 12 && i <= 21) || (i >= 23 && i <= 32) || (i >= 34 && i <= 43) || (i >= 45 && i <= 54) || (i >= 56 && i <= 65))
+                    //  table
                     num++;
                 }
+        }
+
+        private void readfromdatabase(int sel)
+        {
+            SqlConnection cn = new SqlConnection();
+            cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                "AttachDbFilename=|DataDirectory|curriculums.mdf;" +
+                "Integrated Security=True";
+            cn.Open();
+
+            string sqlstr, temp;
+            for (int i = 0; i < 66; i++)
+            {
+                sqlstr = "SELECT 課名 FROM class where 課程id = " + i.ToString();
+                SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    temp = reader[0].ToString();
+                    reader.Close();
+                    sqlstr = "SELECT 地點 FROM class where 課程id = " + i.ToString();
+                    cmd = new SqlCommand(sqlstr, cn);
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    table[i].Text = temp + "\n" + reader[0].ToString();
+                    reader.Close();
+                    sqlstr = "SELECT A,R,G,B FROM class where 課程id = " + i.ToString();
+                    cmd = new SqlCommand(sqlstr, cn);
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    if (reader[0].ToString() == "")
+                    {
+                        reader.Close();
+                        continue;
+                    }
+                    int A = int.Parse(reader["A"].ToString());
+                    int R = int.Parse(reader["R"].ToString());
+                    int G = int.Parse(reader["G"].ToString());
+                    int B = int.Parse(reader["B"].ToString());
+                    table[i].BackColor = Color.FromArgb(A, R, G, B);
+                    reader.Close();
+                }
+                else if ((i >= 12 && i <= 21) || (i >= 23 && i <= 32) || (i >= 34 && i <= 43) || (i >= 45 && i <= 54) || (i >= 56 && i <= 65))
+                {
+                    reader.Close();
+                    table[i].Text = "";
+                }
+                else
+                    reader.Close();
+            }
         }
 
         private void  Button_Click(Object sender, EventArgs e)
@@ -89,8 +179,6 @@ namespace NCKU_MAP
             DataSet ds = new DataSet();
             SqlDataAdapter daCategory = new SqlDataAdapter("SELECT * FROM class", cn);
             daCategory.Fill(ds, "class");
-            if (ds.Tables[0].Rows.Count != 0)
-                btnnew.Enabled = false;
         }
 
         private void change(object sender, int sel)
@@ -107,28 +195,23 @@ namespace NCKU_MAP
             if (colorDialog1.ShowDialog() != DialogResult.Cancel)
             {
                 tempbtn.BackColor = colorDialog1.Color;
-                /*try
+                MessageBox.Show(tempbtn.BackColor.R.ToString() + " " + tempbtn.BackColor.R);
+                try
                 {
-                    SqlConnection cn = new SqlConnection();
-                    cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
-                        "AttachDbFilename=|DataDirectory|curriculums.mdf;" +
-                        "Integrated Security=True";
-                    DataSet ds = new DataSet();
-                    SqlDataAdapter daCategory = new SqlDataAdapter("SELECT * FROM class", cn);
-                    daCategory.Fill(ds, "class");
-
-                    Edit("INSERT INTO curriculums(背景色)VALUES(N'" +
-                        tbxclass.Text.Replace("'", "''") + "',N'" +
-                        tbxplace.Text.Replace("'", "''") + "',N'" +
-                        tempnum + ")");
-
-
+                    string command = "UPDATE class SET A= " + tempbtn.BackColor.A + " where 課程id=" + tempnum.ToString();
+                    Edit(command);
+                    command = "UPDATE class SET R= " + tempbtn.BackColor.R + " where 課程id=" + tempnum.ToString();
+                    Edit(command);
+                    command = "UPDATE class SET G= " + tempbtn.BackColor.G + " where 課程id=" + tempnum.ToString();
+                    Edit(command);
+                    command = "UPDATE class SET B= " + tempbtn.BackColor.B + " where 課程id=" + tempnum.ToString();
+                    Edit(command);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                DataBindingsClear();*/
+                DataBindingsClear();
             }
         }
 
@@ -141,31 +224,33 @@ namespace NCKU_MAP
                 cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
                     "AttachDbFilename=|DataDirectory|curriculums.mdf;" +
                     "Integrated Security=True";
-                DataSet ds = new DataSet();
-                SqlDataAdapter daCategory = new SqlDataAdapter("SELECT * FROM class", cn);
-                daCategory.Fill(ds, "class");
+                cn.Open();
 
-                tbxclass.DataBindings.Add("Text", ds, "class.課名");
-                tbxplace.DataBindings.Add("Text", ds, "class.地點");
-                bm = this.BindingContext[ds, "class"];
+                string sqlstr = "SELECT 課程id FROM class where 課程id = " + tempnum.ToString();
+                SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+                    Edit("UPDATE class SET 課名= N'" + tbxclass.Text +
+                        "',地點= N'" + tbxplace.Text + "' where 課程id=" + tempnum.ToString());
 
-                string sqlstr = "SELECT 課表id FROM class where 課表id = " + tempnum.ToString();
-                //if(tempbtn.Text == "")
-                Edit("INSERT INTO class(課名,地點,課程id)VALUES(N'" +
+                    //Edit("UPDATE class SET 課名= '" + tbxclass.Text.Replace("'", "''") +
+                    //    "',地點='" + tbxplace.Text.Replace("'", "''") + "where 課程id=" + tempnum.ToString() + "'");
+                    reader.Close();
+                }
+                else
+                    Edit("INSERT INTO class(課名,地點,課程id)VALUES(N'" +
                         tbxclass.Text.Replace("'", "''") + "',N'" +
                         tbxplace.Text.Replace("'", "''") + "'," +
                         tempnum + ")");
-                /*else
-                    Edit("UPDATE class SET 課名= '" + tbxclass.Text.Replace("'", "''") +
-                        "',地點='" + tbxplace.Text.Replace("'", "''") + "'");*/
-
-
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            DataBindingsClear();
+            //DataBindingsClear();
         }
 
         void Edit(string sqlstr)
@@ -193,29 +278,5 @@ namespace NCKU_MAP
             }
         }
 
-        private void btnview_Click(object sender, EventArgs e)
-        {
-            show_curriculum();
-
-        }
-
-        private void btndelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SqlConnection cn = new SqlConnection();
-                cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
-                    "AttachDbFilename=|DataDirectory|curriculums.mdf;" +
-                    "Integrated Security=True";
-                DataSet ds = new DataSet();
-                SqlDataAdapter daCategory = new SqlDataAdapter("SELECT * FROM class", cn);
-                daCategory.Fill(ds, "class");
-                ds.Tables["class"].Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
     }
 }
