@@ -115,18 +115,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MapInfo.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MapInfo_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>MapInfo.mdf</DependentUpon>
+    </Content>
     <None Include="NCKU_logo.png" />
     <None Include="time_icon.png" />
     <None Include="phone_icon.png" />
     <None Include="website-icon.png" />
     <None Include="address_icon.png" />
     <None Include="function_icon.png" />
-    <Content Include="bin\Debug\MapInfo.mdf">
+    <Content Include="curriculums.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="bin\Debug\MapInfo_log.ldf">
-      <DependentUpon>MapInfo.mdf</DependentUpon>
+    <Content Include="curriculums_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>curriculums.mdf</DependentUpon>
     </Content>
     <Content Include="Gmaps.htm" />
   </ItemGroup>
@@ -142,6 +149,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
