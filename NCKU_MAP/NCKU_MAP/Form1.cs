@@ -109,7 +109,7 @@ namespace NCKU_MAP
             lbxStorelist.Items.Clear();
             while(reader.Read())
             {
-                MessageBox.Show(reader.GetString(0));
+                //MessageBox.Show(reader.GetString(0));
                 lbxStorelist.Items.Add(reader.GetString(0));
             }
             reader.Close();
@@ -118,7 +118,7 @@ namespace NCKU_MAP
         }
         private void Navigate()
         {
-            MessageBox.Show("Start search");
+            //MessageBox.Show("Start search");
             try
             {
                 string[] naviSceneName = { tbxStart.Text, tbxEnd.Text };
