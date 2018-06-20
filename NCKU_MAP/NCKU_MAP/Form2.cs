@@ -131,17 +131,17 @@ namespace NCKU_MAP
 
         private void btnupdate_Click(object sender, EventArgs e)
         {
-            Edit("UPDATE SceneInfo SET SceneName= '" + tbxName.Text.Replace("'", "''") +
-                "',SceneType='" + tbxType.Text.Replace("'", "''") +
-                "',SceneDescript='" + tbxDescript.Text.Replace("'", "''") +
-                "',Address='" + tbxAddress.Text.Replace("'", "''") +
-                "',Website='" + tbxWebsite.Text.Replace("'", "''") +
-                "',PhoneNumber='" + tbxPhoneNum.Text.Replace("'", "''") +
-                "',OpenTime='" + tbxOpenTime.Text.Replace("'", "''") +
-                "',ImagePath='" + tbxImgPath.Text.Replace("'", "''") +
-                "',Latitude='" + tbxLat.Text.Replace("'", "''") +
-                "',Longitude='" + tbxLng.Text.Replace("'", "''") +
-                "' WHERE mapID='" + tbxID.Text.Replace("'", "''") + "'");
+            Edit("UPDATE SceneInfo SET SceneName= N'" + tbxName.Text.Replace("'", "''") +
+                "',SceneType=N'" + tbxType.Text.Replace("'", "''") +
+                "',SceneDescript=N'" + tbxDescript.Text.Replace("'", "''") +
+                "',Address=N'" + tbxAddress.Text.Replace("'", "''") +
+                "',Website=N'" + tbxWebsite.Text.Replace("'", "''") +
+                "',PhoneNumber=N'" + tbxPhoneNum.Text.Replace("'", "''") +
+                "',OpenTime=N'" + tbxOpenTime.Text.Replace("'", "''") +
+                "',ImagePath=N'" + tbxImgPath.Text.Replace("'", "''") +
+                "',Latitude=N'" + tbxLat.Text.Replace("'", "''") +
+                "',Longitude=N'" + tbxLng.Text.Replace("'", "''") +
+                "' WHERE mapID=N'" + tbxID.Text.Replace("'", "''") + "'");
             DataBindingsClear();
             Form2_Load(sender, e);
         }
