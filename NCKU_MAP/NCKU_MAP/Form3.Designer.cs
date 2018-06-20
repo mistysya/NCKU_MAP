@@ -98,7 +98,7 @@
             this.btnnew.Name = "btnnew";
             this.btnnew.Size = new System.Drawing.Size(180, 50);
             this.btnnew.TabIndex = 1;
-            this.btnnew.Text = "新增課表";
+            this.btnnew.Text = "編輯課表";
             this.btnnew.UseVisualStyleBackColor = true;
             this.btnnew.Click += new System.EventHandler(this.btnnew_Click);
             // 
