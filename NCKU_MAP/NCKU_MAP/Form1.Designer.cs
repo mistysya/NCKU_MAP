@@ -366,6 +366,7 @@
             this.btnsaved.TabIndex = 0;
             this.btnsaved.Text = "儲存點";
             this.btnsaved.UseVisualStyleBackColor = true;
+            this.btnsaved.Click += new System.EventHandler(this.btnsaved_Click);
             // 
             // panlogo
             // 
