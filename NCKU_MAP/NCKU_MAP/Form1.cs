@@ -24,6 +24,7 @@ namespace NCKU_MAP
         public Form1()
         {
             InitializeComponent();
+            f3.f1 = this;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -87,6 +88,9 @@ namespace NCKU_MAP
         }
         private void btnguide_Click(object sender, EventArgs e)
         {
+            System.Drawing.Drawing2D.GraphicsPath aCircle = new System.Drawing.Drawing2D.GraphicsPath();
+            aCircle.AddEllipse(new Rectangle(0, 0, 35, 35));
+            btnNavigateFind.Region = new Region(aCircle);
             panelNavigate.Location = new Point(0, 0);
             panelNavigate.Visible = true;
             tbxEnd.Text = lblScene.Text;
@@ -188,7 +192,7 @@ namespace NCKU_MAP
                     Navigate();
             }
         }
-        void FindLocation(string find)
+        public void FindLocation(string find)
         {
             try
             {

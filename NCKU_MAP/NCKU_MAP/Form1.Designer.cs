@@ -455,11 +455,14 @@
             // 
             // btnNavigateFind
             // 
-            this.btnNavigateFind.Location = new System.Drawing.Point(286, 110);
+            this.btnNavigateFind.FlatAppearance.BorderSize = 0;
+            this.btnNavigateFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNavigateFind.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavigateFind.Location = new System.Drawing.Point(294, 110);
             this.btnNavigateFind.Name = "btnNavigateFind";
-            this.btnNavigateFind.Size = new System.Drawing.Size(30, 29);
+            this.btnNavigateFind.Size = new System.Drawing.Size(35, 35);
             this.btnNavigateFind.TabIndex = 4;
-            this.btnNavigateFind.Text = "找";
+            this.btnNavigateFind.Text = "Go";
             this.btnNavigateFind.UseVisualStyleBackColor = true;
             this.btnNavigateFind.Click += new System.EventHandler(this.btnNavigateFind_Click);
             // 
@@ -479,11 +482,12 @@
             // 
             // lbxNavigate
             // 
+            this.lbxNavigate.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbxNavigate.FormattingEnabled = true;
-            this.lbxNavigate.ItemHeight = 12;
+            this.lbxNavigate.ItemHeight = 17;
             this.lbxNavigate.Location = new System.Drawing.Point(67, 145);
             this.lbxNavigate.Name = "lbxNavigate";
-            this.lbxNavigate.Size = new System.Drawing.Size(212, 124);
+            this.lbxNavigate.Size = new System.Drawing.Size(212, 123);
             this.lbxNavigate.TabIndex = 2;
             this.lbxNavigate.Visible = false;
             // 
@@ -516,7 +520,7 @@
             this.panelStoreList.Controls.Add(this.lblStoreList);
             this.panelStoreList.Controls.Add(this.lbxStorelist);
             this.panelStoreList.Controls.Add(this.btnStoreClose);
-            this.panelStoreList.Location = new System.Drawing.Point(353, 2);
+            this.panelStoreList.Location = new System.Drawing.Point(374, 0);
             this.panelStoreList.Name = "panelStoreList";
             this.panelStoreList.Size = new System.Drawing.Size(350, 680);
             this.panelStoreList.TabIndex = 18;
@@ -534,12 +538,12 @@
             // 
             // lbxStorelist
             // 
-            this.lbxStorelist.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbxStorelist.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbxStorelist.FormattingEnabled = true;
-            this.lbxStorelist.ItemHeight = 20;
+            this.lbxStorelist.ItemHeight = 27;
             this.lbxStorelist.Location = new System.Drawing.Point(28, 80);
             this.lbxStorelist.Name = "lbxStorelist";
-            this.lbxStorelist.Size = new System.Drawing.Size(297, 524);
+            this.lbxStorelist.Size = new System.Drawing.Size(297, 517);
             this.lbxStorelist.TabIndex = 4;
             this.lbxStorelist.SelectedIndexChanged += new System.EventHandler(this.lbxStorelist_SelectedIndexChanged);
             // 

@@ -16,6 +16,8 @@ namespace NCKU_MAP
         Button[] table = new Button[66];
         public Button tempbtn;
         public int tempnum;
+        int edit_or_view;
+        public Form1 f1;
 
         public Form3()
         {
@@ -25,22 +27,25 @@ namespace NCKU_MAP
                 table[i] = new Button();
             }
         }
+        BindingManagerBase bm;
 
         private void btnnew_Click(object sender, EventArgs e)
         {
+            edit_or_view = 0;
             show_curriculum(0);//edit button call
             readfromdatabase(0);
         }
 
         private void btnview_Click(object sender, EventArgs e)
         {
+            edit_or_view = 1;
             show_curriculum(1);//view button call
             readfromdatabase(1);
             gbxnewclass.Visible = false;
-            for (int i = 0; i < 66; i++)
+            /*for (int i = 0; i < 66; i++)
             {
                 table[i].Visible = true;
-            }
+            }*/
         }
 
         private void btndelete_Click(object sender, EventArgs e)
@@ -94,15 +99,14 @@ namespace NCKU_MAP
                     table[num].FlatAppearance.BorderSize = 2;
                     Controls.Add(table[num]);
                     table[num].Click += new System.EventHandler(this.Button_Click);//let all buttons share the same function
-                    //MessageBox.Show(sel.ToString() + " " + i.ToString());
+                    /*MessageBox.Show(sel.ToString() + " " + i.ToString());
                     if (sel == 1)
                         table[num].Enabled = false;
                     else if (sel == 0 && (num >= 12 && num <= 21) || (num >= 23 && num <= 32) || (num >= 34 && num <= 43) || (num >= 45 && num <= 54) || (num >= 56 && num <= 65))
                     {
                         table[num].Enabled = true;
-                    }
-                    //else if ((i >= 12 && i <= 21) || (i >= 23 && i <= 32) || (i >= 34 && i <= 43) || (i >= 45 && i <= 54) || (i >= 56 && i <= 65))
-                    //  table
+                    }*/
+
                     num++;
                 }
         }
@@ -162,12 +166,33 @@ namespace NCKU_MAP
         {
             Button btnclick = (Button)sender;
             tempnum = Array.IndexOf(table, btnclick);
-            gbxnewclass.Visible = true;
-            System.Drawing.Drawing2D.GraphicsPath aCircle = new System.Drawing.Drawing2D.GraphicsPath();
-            aCircle.AddEllipse(new Rectangle(0, 0, 45, 45));
-            btnsaveclass.Region = new Region(aCircle);
-            tempbtn = (Button)sender;
-            tbxclass.Text = tbxplace.Text = "";
+            if (edit_or_view == 0)
+            {
+                gbxnewclass.Visible = true;
+                System.Drawing.Drawing2D.GraphicsPath aCircle = new System.Drawing.Drawing2D.GraphicsPath();
+                aCircle.AddEllipse(new Rectangle(0, 0, 45, 45));
+                btnsaveclass.Region = new Region(aCircle);
+                tempbtn = (Button)sender;
+                //tbxclass.Text = tbxplace.Text = "";
+                DataBindings.Clear();
+            }
+            if(edit_or_view == 1)
+            {
+                SqlConnection cn = new SqlConnection();
+                cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|curriculums.mdf;" +
+                    "Integrated Security=True";
+                cn.Open();
+
+                string sqlstr = "SELECT 地點 FROM class where 課程id = " + tempnum.ToString();
+                SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                string search  = reader[0].ToString();
+                reader.Close();
+                MessageBox.Show(search);
+                //f1.FindLocation(search);
+            }
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -179,6 +204,9 @@ namespace NCKU_MAP
             DataSet ds = new DataSet();
             SqlDataAdapter daCategory = new SqlDataAdapter("SELECT * FROM class", cn);
             daCategory.Fill(ds, "class");
+            tbxclass.DataBindings.Add("Text", ds, "class.課名");
+            tbxplace.DataBindings.Add("Text", ds, "class.地點");
+            bm = this.BindingContext[ds, "class"];
         }
 
         private void change(object sender, int sel)
@@ -211,7 +239,7 @@ namespace NCKU_MAP
                 {
                     MessageBox.Show(ex.Message);
                 }
-                DataBindingsClear();
+                
             }
         }
 
@@ -238,12 +266,19 @@ namespace NCKU_MAP
                     //Edit("UPDATE class SET 課名= '" + tbxclass.Text.Replace("'", "''") +
                     //    "',地點='" + tbxplace.Text.Replace("'", "''") + "where 課程id=" + tempnum.ToString() + "'");
                     reader.Close();
+                    DataBindingsClear();
+                    Form3_Load(sender, e);
                 }
                 else
+                {
                     Edit("INSERT INTO class(課名,地點,課程id)VALUES(N'" +
                         tbxclass.Text.Replace("'", "''") + "',N'" +
                         tbxplace.Text.Replace("'", "''") + "'," +
                         tempnum + ")");
+                    DataBindingsClear();
+                    Form3_Load(sender, e);
+                }
+                    
                 
             }
             catch (Exception ex)
@@ -272,10 +307,8 @@ namespace NCKU_MAP
         }
         void DataBindingsClear()
         {
-            for(int i = 12; i < 66; i++)
-            {
-                table[i].DataBindings.Clear();
-            }
+            tbxclass.DataBindings.Clear();
+            tbxplace.DataBindings.Clear();
         }
 
     }
