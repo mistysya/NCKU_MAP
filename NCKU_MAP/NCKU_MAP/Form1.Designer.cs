@@ -602,7 +602,6 @@
 
         #endregion
         private System.Windows.Forms.TextBox tbxSearch;
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblScene;
         private System.Windows.Forms.Button btnBookmark;
@@ -641,6 +640,7 @@
         private System.Windows.Forms.ListBox lbxStorelist;
         private System.Windows.Forms.Button btnStoreClose;
         private System.Windows.Forms.Label lblStoreList;
+        public System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 

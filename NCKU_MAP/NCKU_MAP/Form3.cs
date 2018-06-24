@@ -13,11 +13,13 @@ namespace NCKU_MAP
 {
     public partial class Form3 : Form
     {
+        public Form1 f1;
+        private TextBox tbxS;
+        private ListBox lbxS;
         Button[] table = new Button[66];
         public Button tempbtn;
         public int tempnum;
         int edit_or_view;
-        public Form1 f1;
 
         public Form3()
         {
@@ -310,6 +312,211 @@ namespace NCKU_MAP
             tbxclass.DataBindings.Clear();
             tbxplace.DataBindings.Clear();
         }
+        /*
+        private void tbxplace_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void tbxplace_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void tbxplace_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }*/
+        public void tbxplace_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) // press "Enter"
+            {
+                if (lbxClassLocate.SelectedIndex >= 0)
+                {
+                    SceneInfo tmp = (SceneInfo)lbxClassLocate.SelectedItem;
+                    tbxplace.Text = tmp.sceneName_;
+                    //f1.FindLocation(tmp.sceneName_);
+
+                    /*
+                    SqlConnection cn = new SqlConnection();
+                    cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                        "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
+                        "Integrated Security=True";
+                    cn.Open();
+                    string sqlstr = "SELECT * FROM SceneInfo where SceneName = N'" + tmp.sceneName_ + "'";
+                    //SceneType,SceneDescript,Address,Website,PhoneNumber,OpenTime
+                    SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    reader.Close();*/
+                }
+                else
+                {
+                    //f1.webBrowser1.Document.InvokeScript("GetAddressMarker", new Object[] { tbxplace.Text }); // call javascript to Search
+                    //可以在這邊加入是否要新增地點之選項
+                }
+                lbxClassLocate.Visible = false; // dont show AutoComplete
+            }
+        }
+        public void tbxplace_KeyUp(object sender, KeyEventArgs e)
+        {
+            TextBox eObj = sender as TextBox;
+            tbxS = eObj;
+            if (eObj.Name == "tbxplace")
+            {
+                lbxS = lbxClassLocate;
+            }
+            else;
+            if (tbxS.Text == "")
+            {
+                tbxS.Select(tbxS.Text.Length, 1);
+                lbxS.Visible = false;
+                return;
+            }
+            // Press Up & Left
+            if (e.KeyCode == Keys.Up)
+            {
+                if (lbxS.SelectedIndex > -1)
+                {
+                    lbxS.SelectedIndex--;
+                    tbxS.Select(tbxS.Text.Length, 1);
+                }
+            }
+            // Press Down & Right
+            else if (e.KeyCode == Keys.Down)
+            {
+                if (lbxS.SelectedIndex < lbxS.Items.Count - 1)
+                {
+                    lbxS.SelectedIndex++;
+                    tbxS.Select(tbxS.Text.Length, 1);
+                }
+            }
+        }
+        public void tbxplace_TextChanged(object sender, EventArgs e)
+        {
+            TextBox eObj = sender as TextBox;
+            tbxS = eObj;
+            // IList<string> autocompleteResult = PredicSearch(tbxSearch.Text);
+            PredictionInfo pred = new PredictionInfo(tbxS.Text);
+            List<SceneInfo> predList = pred.GetList(5);
+            //MessageBox.Show(predList.Count.ToString() + " " + tbxSearch.Text);
+            if (predList.Count > 0)
+            {
+                lbxS.DataSource = predList;
+                lbxS.DisplayMember = "SceneName";
+                lbxS.Visible = true;
+                lbxS.SelectedIndex = -1;
+            }
+            else
+                lbxS.Visible = false;
+        }
+        public class SceneInfo : IComparable
+        {
+            public string sceneName_;
+            public int samewords_;
+            public int leavewords_; // leave words
+            public SceneInfo(string sceneName, int samewords, int leavewords)
+            {
+                this.sceneName_ = sceneName;
+                this.samewords_ = samewords;
+                this.leavewords_ = leavewords;
+            }
+            public int CompareTo(object obj)
+            {
+                SceneInfo tobeCompared = (SceneInfo)obj;
+                if (this.samewords_ > tobeCompared.samewords_)
+                    return -1;
+                else if (this.samewords_ == tobeCompared.samewords_)
+                {
+                    if (this.leavewords_ > tobeCompared.leavewords_)
+                        return 1;
+                    else if (this.leavewords_ == tobeCompared.leavewords_)
+                        return 0;
+                    else
+                        return -1;
+                }
+                else
+                    return 1;
+            }
+            public string SceneName
+            {
+                get
+                {
+                    return sceneName_;
+                }
+            }
+        }
+        public class PredictionInfo
+        {
+            public string input_;
+            private List<SceneInfo> sceneData_ = new List<SceneInfo>();
+            public PredictionInfo(string input)
+            {
+                this.input_ = input;
+                // import Database
+                SqlConnection cn = new SqlConnection();
+                cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
+                    "Integrated Security=True";
+                cn.Open();
+                string sqlstr = "SELECT SceneName FROM SceneInfo";
+                SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                // store Data
+                while (reader.Read())
+                {
+                    // Add data & calculate priority
+                    string r = reader.GetString(0);
+                    int same = Compare(reader.GetString(0));
+                    int leave = r.Length - same;
+                    SceneInfo temp = new SceneInfo(r, same, leave);
+                    sceneData_.Add(temp);
+                }
+                reader.Close();
+                // sort priority
+                sceneData_.Sort();
+            }
+            public int Compare(string data)
+            {
+                int count = 0;
+                for (int i = 0; i < data.Length; i++)
+                {
+                    int tmp = 0;
+                    for (int j = i, k = 0; k < input_.Length; k++, j++)
+                    {
+                        if (j >= data.Length)
+                            break;
+                        if (input_[k] == data[j])
+                            tmp++;
+                    }
+                    count = Math.Max(count, tmp);
+                }
+                return count;
+            }
+            public void Show()
+            {
+                string tmp = "";
+                foreach (SceneInfo s in sceneData_)
+                    tmp += (s.sceneName_ + " " + s.samewords_ + " " + s.leavewords_ + "\n");
+                MessageBox.Show(tmp);
+            }
+            public List<SceneInfo> GetList(int num)
+            {
+                List<SceneInfo> result = new List<SceneInfo>();
+                if (num > sceneData_.Count)
+                    for (int i = 0; i < sceneData_.Count; i++)
+                    {
+                        if (sceneData_[i].samewords_ > 0)
+                            result.Add(sceneData_[i]);
+                    }
+                else
+                    for (int i = 0; i < num; i++)
+                    {
+                        if (sceneData_[i].samewords_ > 0)
+                            result.Add(sceneData_[i]);
+                    }
+                return result;
+            }
+        }
     }
 }

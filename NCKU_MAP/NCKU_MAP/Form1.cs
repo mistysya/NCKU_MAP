@@ -21,6 +21,7 @@ namespace NCKU_MAP
         public Form3 f3 = new Form3();
         private TextBox tbxS;
         private ListBox lbxS;
+        //public WebBrowser webBrowser1 = webBrowserGmap;
         public Form1()
         {
             InitializeComponent();
@@ -219,7 +220,7 @@ namespace NCKU_MAP
                 MessageBox.Show(ex.Message);
             }
         }
-        private void tbxSearch_KeyDown(object sender, KeyEventArgs e)
+        public void tbxSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && !lblScene.Text.Equals("")) // press "Enter"
             {
@@ -255,7 +256,7 @@ namespace NCKU_MAP
                 lbxSearchBar.Visible = false; // dont show AutoComplete
             }
         }
-        private void tbxSearch_KeyUp(object sender, KeyEventArgs e)
+        public void tbxSearch_KeyUp(object sender, KeyEventArgs e)
         {
             TextBox eObj = sender as TextBox;
             tbxS = eObj;
@@ -293,7 +294,7 @@ namespace NCKU_MAP
                 }
             }
         }
-        private void tbxSearch_TextChanged(object sender, EventArgs e)
+        public void tbxSearch_TextChanged(object sender, EventArgs e)
         {
             TextBox eObj = sender as TextBox;
             tbxS = eObj;

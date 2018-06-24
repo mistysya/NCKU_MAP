@@ -42,6 +42,7 @@
             this.btnbackcolor = new System.Windows.Forms.Button();
             this.btnsaveclass = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.lbxClassLocate = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gbxnewclass.SuspendLayout();
@@ -159,10 +160,14 @@
             this.tbxplace.Name = "tbxplace";
             this.tbxplace.Size = new System.Drawing.Size(165, 29);
             this.tbxplace.TabIndex = 7;
+            this.tbxplace.TextChanged += new System.EventHandler(this.tbxplace_TextChanged);
+            this.tbxplace.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxplace_KeyDown);
+            this.tbxplace.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbxplace_KeyUp);
             // 
             // gbxnewclass
             // 
             this.gbxnewclass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.gbxnewclass.Controls.Add(this.lbxClassLocate);
             this.gbxnewclass.Controls.Add(this.btnbackcolor);
             this.gbxnewclass.Controls.Add(this.btnsaveclass);
             this.gbxnewclass.Controls.Add(this.lblclass);
@@ -205,6 +210,16 @@
             this.btnsaveclass.UseVisualStyleBackColor = true;
             this.btnsaveclass.Click += new System.EventHandler(this.btnsaveclass_Click);
             // 
+            // lbxClassLocate
+            // 
+            this.lbxClassLocate.FormattingEnabled = true;
+            this.lbxClassLocate.ItemHeight = 20;
+            this.lbxClassLocate.Location = new System.Drawing.Point(20, 178);
+            this.lbxClassLocate.Name = "lbxClassLocate";
+            this.lbxClassLocate.Size = new System.Drawing.Size(165, 124);
+            this.lbxClassLocate.TabIndex = 11;
+            this.lbxClassLocate.Visible = false;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -241,5 +256,6 @@
         private System.Windows.Forms.Button btnsaveclass;
         private System.Windows.Forms.Button btnbackcolor;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.ListBox lbxClassLocate;
     }
 }
