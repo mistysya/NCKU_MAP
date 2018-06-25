@@ -192,8 +192,21 @@ namespace NCKU_MAP
                 reader.Read();
                 string search  = reader[0].ToString();
                 reader.Close();
-                MessageBox.Show(search);
-                //f1.FindLocation(search);
+                cn = new SqlConnection();
+                cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                        "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
+                        "Integrated Security=True";
+                cn.Open();
+
+                sqlstr = "SELECT * FROM SceneInfo where SceneName = N'" + search + "'";
+                cmd = new SqlCommand(sqlstr, cn);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                    f1.FindLocation(search);
+                else
+                    f1.webBrowser1.Document.InvokeScript("GetAddressMarker", new Object[] { search });
+                reader.Close();
             }
         }
 
@@ -209,6 +222,9 @@ namespace NCKU_MAP
             tbxclass.DataBindings.Add("Text", ds, "class.課名");
             tbxplace.DataBindings.Add("Text", ds, "class.地點");
             bm = this.BindingContext[ds, "class"];
+            lbxS = lbxClassLocate;
+            //tbxclass.Text = "";
+            //tbxplace.Text = "";
         }
 
         private void change(object sender, int sel)
@@ -252,13 +268,37 @@ namespace NCKU_MAP
             {
                 SqlConnection cn = new SqlConnection();
                 cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                        "AttachDbFilename=|DataDirectory|MapInfo.mdf;" +
+                        "Integrated Security=True";
+                cn.Open();
+
+                string sqlstr = "SELECT * FROM SceneInfo where SceneName = N'" + tbxplace.Text + "'";
+                SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                if (!reader.HasRows)
+                {
+                    DialogResult result = MessageBox.Show("是否要新增該地點到資料庫？(可自行針對地圖標記地點做微調)", "提醒", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        //MessageBox.Show(tbxplace.Text);
+                        f1.webBrowser1.Document.InvokeScript("GetAddressMarker", new Object[] { tbxplace.Text }); // call javascript to Search
+                        Task.Delay(1000);
+                        f1.f2 = new Form2();
+                        f1.f2.Show();
+                        f1.webBrowser1.Document.InvokeScript("setAddMarker");
+                    }
+                }
+                reader.Close();
+                cn = new SqlConnection();
+                cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
                     "AttachDbFilename=|DataDirectory|curriculums.mdf;" +
                     "Integrated Security=True";
                 cn.Open();
 
-                string sqlstr = "SELECT 課程id FROM class where 課程id = " + tempnum.ToString();
-                SqlCommand cmd = new SqlCommand(sqlstr, cn);
-                SqlDataReader reader = cmd.ExecuteReader();
+                sqlstr = "SELECT 課程id FROM class where 課程id = " + tempnum.ToString();
+                cmd = new SqlCommand(sqlstr, cn);
+                reader = cmd.ExecuteReader();
                 reader.Read();
                 if (reader.HasRows)
                 {
@@ -280,8 +320,9 @@ namespace NCKU_MAP
                     DataBindingsClear();
                     Form3_Load(sender, e);
                 }
-                    
-                
+                reader.Close();
+                tbxplace.Text = "";
+
             }
             catch (Exception ex)
             {
@@ -400,7 +441,7 @@ namespace NCKU_MAP
             PredictionInfo pred = new PredictionInfo(tbxS.Text);
             List<SceneInfo> predList = pred.GetList(5);
             //MessageBox.Show(predList.Count.ToString() + " " + tbxSearch.Text);
-            if (predList.Count > 0)
+            if (predList.Count > 0 && predList != null)
             {
                 lbxS.DataSource = predList;
                 lbxS.DisplayMember = "SceneName";

@@ -39,10 +39,10 @@
             this.tbxclass = new System.Windows.Forms.TextBox();
             this.tbxplace = new System.Windows.Forms.TextBox();
             this.gbxnewclass = new System.Windows.Forms.GroupBox();
+            this.lbxClassLocate = new System.Windows.Forms.ListBox();
             this.btnbackcolor = new System.Windows.Forms.Button();
             this.btnsaveclass = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.lbxClassLocate = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gbxnewclass.SuspendLayout();
@@ -184,6 +184,16 @@
             this.gbxnewclass.Text = "新增課程";
             this.gbxnewclass.Visible = false;
             // 
+            // lbxClassLocate
+            // 
+            this.lbxClassLocate.FormattingEnabled = true;
+            this.lbxClassLocate.ItemHeight = 20;
+            this.lbxClassLocate.Location = new System.Drawing.Point(20, 180);
+            this.lbxClassLocate.Name = "lbxClassLocate";
+            this.lbxClassLocate.Size = new System.Drawing.Size(165, 124);
+            this.lbxClassLocate.TabIndex = 11;
+            this.lbxClassLocate.Visible = false;
+            // 
             // btnbackcolor
             // 
             this.btnbackcolor.FlatAppearance.BorderColor = System.Drawing.Color.White;
@@ -209,16 +219,6 @@
             this.btnsaveclass.Text = "OK!";
             this.btnsaveclass.UseVisualStyleBackColor = true;
             this.btnsaveclass.Click += new System.EventHandler(this.btnsaveclass_Click);
-            // 
-            // lbxClassLocate
-            // 
-            this.lbxClassLocate.FormattingEnabled = true;
-            this.lbxClassLocate.ItemHeight = 20;
-            this.lbxClassLocate.Location = new System.Drawing.Point(20, 178);
-            this.lbxClassLocate.Name = "lbxClassLocate";
-            this.lbxClassLocate.Size = new System.Drawing.Size(165, 124);
-            this.lbxClassLocate.TabIndex = 11;
-            this.lbxClassLocate.Visible = false;
             // 
             // Form3
             // 
