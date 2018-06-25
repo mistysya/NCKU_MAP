@@ -25,7 +25,6 @@ namespace NCKU_MAP
         public Form1()
         {
             InitializeComponent();
-            f3.f1 = this;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -42,6 +41,7 @@ namespace NCKU_MAP
             panelNavigate.Location = new Point(-panelNavigate.Width, 0); // initiallize sidebar location
             panlogo.Location = new Point(0, 0);
             lbxS = lbxSearchBar;
+            f3.f1 = this;
         }
         public void UpdateLatLng(double lat, double lng)
         {
@@ -423,7 +423,7 @@ namespace NCKU_MAP
 
         private void btnclasstable_Click(object sender, EventArgs e)
         {
-            f3 = new Form3();
+            //f3 = new Form3();
             f3.Show();
         }
 
