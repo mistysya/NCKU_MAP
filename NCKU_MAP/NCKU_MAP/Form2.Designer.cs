@@ -47,8 +47,6 @@
             this.tbxDescript = new System.Windows.Forms.TextBox();
             this.lblDescript = new System.Windows.Forms.Label();
             this.btnAddToDatabase = new System.Windows.Forms.Button();
-            this.lblImgPath = new System.Windows.Forms.Label();
-            this.tbxImgPath = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnDeleteFromDatabase = new System.Windows.Forms.Button();
             this.lblID = new System.Windows.Forms.Label();
@@ -198,7 +196,7 @@
             this.tbxDescript.Location = new System.Drawing.Point(69, 260);
             this.tbxDescript.Multiline = true;
             this.tbxDescript.Name = "tbxDescript";
-            this.tbxDescript.Size = new System.Drawing.Size(132, 82);
+            this.tbxDescript.Size = new System.Drawing.Size(132, 144);
             this.tbxDescript.TabIndex = 17;
             // 
             // lblDescript
@@ -220,23 +218,6 @@
             this.btnAddToDatabase.Text = "確定新增";
             this.btnAddToDatabase.UseVisualStyleBackColor = true;
             this.btnAddToDatabase.Click += new System.EventHandler(this.btnAddToDatabase_Click);
-            // 
-            // lblImgPath
-            // 
-            this.lblImgPath.AutoSize = true;
-            this.lblImgPath.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblImgPath.Location = new System.Drawing.Point(6, 348);
-            this.lblImgPath.Name = "lblImgPath";
-            this.lblImgPath.Size = new System.Drawing.Size(201, 20);
-            this.lblImgPath.TabIndex = 19;
-            this.lblImgPath.Text = "圖片路徑：(Fromfile(@\"\"))";
-            // 
-            // tbxImgPath
-            // 
-            this.tbxImgPath.Location = new System.Drawing.Point(10, 371);
-            this.tbxImgPath.Name = "tbxImgPath";
-            this.tbxImgPath.Size = new System.Drawing.Size(189, 22);
-            this.tbxImgPath.TabIndex = 20;
             // 
             // dataGridView1
             // 
@@ -294,8 +275,6 @@
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.btnDeleteFromDatabase);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.tbxImgPath);
-            this.Controls.Add(this.lblImgPath);
             this.Controls.Add(this.btnAddToDatabase);
             this.Controls.Add(this.tbxDescript);
             this.Controls.Add(this.lblDescript);
@@ -345,8 +324,6 @@
         private System.Windows.Forms.TextBox tbxDescript;
         private System.Windows.Forms.Label lblDescript;
         private System.Windows.Forms.Button btnAddToDatabase;
-        private System.Windows.Forms.Label lblImgPath;
-        private System.Windows.Forms.TextBox tbxImgPath;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnDeleteFromDatabase;
         private System.Windows.Forms.Label lblID;

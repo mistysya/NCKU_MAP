@@ -39,6 +39,7 @@
             this.tbxclass = new System.Windows.Forms.TextBox();
             this.tbxplace = new System.Windows.Forms.TextBox();
             this.gbxnewclass = new System.Windows.Forms.GroupBox();
+            this.btndelclass = new System.Windows.Forms.Button();
             this.lbxClassLocate = new System.Windows.Forms.ListBox();
             this.btnbackcolor = new System.Windows.Forms.Button();
             this.btnsaveclass = new System.Windows.Forms.Button();
@@ -167,6 +168,7 @@
             // gbxnewclass
             // 
             this.gbxnewclass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.gbxnewclass.Controls.Add(this.btndelclass);
             this.gbxnewclass.Controls.Add(this.lbxClassLocate);
             this.gbxnewclass.Controls.Add(this.btnbackcolor);
             this.gbxnewclass.Controls.Add(this.btnsaveclass);
@@ -176,21 +178,34 @@
             this.gbxnewclass.Controls.Add(this.tbxplace);
             this.gbxnewclass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbxnewclass.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.gbxnewclass.Location = new System.Drawing.Point(879, 160);
+            this.gbxnewclass.Location = new System.Drawing.Point(875, 160);
             this.gbxnewclass.Name = "gbxnewclass";
-            this.gbxnewclass.Size = new System.Drawing.Size(203, 304);
+            this.gbxnewclass.Size = new System.Drawing.Size(203, 338);
             this.gbxnewclass.TabIndex = 10;
             this.gbxnewclass.TabStop = false;
             this.gbxnewclass.Text = "新增課程";
             this.gbxnewclass.Visible = false;
             // 
+            // btndelclass
+            // 
+            this.btndelclass.FlatAppearance.BorderSize = 0;
+            this.btndelclass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btndelclass.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndelclass.Location = new System.Drawing.Point(101, 283);
+            this.btndelclass.Name = "btndelclass";
+            this.btndelclass.Size = new System.Drawing.Size(45, 45);
+            this.btndelclass.TabIndex = 12;
+            this.btndelclass.Text = "Del";
+            this.btndelclass.UseVisualStyleBackColor = true;
+            this.btndelclass.Click += new System.EventHandler(this.btndelclass_Click);
+            // 
             // lbxClassLocate
             // 
             this.lbxClassLocate.FormattingEnabled = true;
             this.lbxClassLocate.ItemHeight = 20;
-            this.lbxClassLocate.Location = new System.Drawing.Point(20, 180);
+            this.lbxClassLocate.Location = new System.Drawing.Point(20, 177);
             this.lbxClassLocate.Name = "lbxClassLocate";
-            this.lbxClassLocate.Size = new System.Drawing.Size(165, 124);
+            this.lbxClassLocate.Size = new System.Drawing.Size(165, 64);
             this.lbxClassLocate.TabIndex = 11;
             this.lbxClassLocate.Visible = false;
             // 
@@ -199,7 +214,7 @@
             this.btnbackcolor.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnbackcolor.FlatAppearance.BorderSize = 2;
             this.btnbackcolor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnbackcolor.Location = new System.Drawing.Point(20, 204);
+            this.btnbackcolor.Location = new System.Drawing.Point(20, 247);
             this.btnbackcolor.Name = "btnbackcolor";
             this.btnbackcolor.Size = new System.Drawing.Size(165, 30);
             this.btnbackcolor.TabIndex = 10;
@@ -212,7 +227,7 @@
             this.btnsaveclass.FlatAppearance.BorderSize = 0;
             this.btnsaveclass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnsaveclass.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsaveclass.Location = new System.Drawing.Point(78, 251);
+            this.btnsaveclass.Location = new System.Drawing.Point(152, 283);
             this.btnsaveclass.Name = "btnsaveclass";
             this.btnsaveclass.Size = new System.Drawing.Size(45, 45);
             this.btnsaveclass.TabIndex = 9;
@@ -257,5 +272,6 @@
         private System.Windows.Forms.Button btnbackcolor;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.ListBox lbxClassLocate;
+        private System.Windows.Forms.Button btndelclass;
     }
 }

@@ -17,19 +17,20 @@ namespace NCKU_MAP
         private TextBox tbxS;
         private ListBox lbxS;
         Button[] table = new Button[66];
-        public Button tempbtn;
-        public int tempnum;
+        private Button tempbtn = null;
+        private int tempnum = 0;
         int edit_or_view;
 
-        public Form3()
+        public Form3(Form1 newf1)
         {
             InitializeComponent();
             for (int i = 0; i < 66; i++)
             {
                 table[i] = new Button();
             }
+            f1 = newf1;
         }
-        BindingManagerBase bm;
+        //BindingManagerBase bm;
 
         private void btnnew_Click(object sender, EventArgs e)
         {
@@ -151,13 +152,17 @@ namespace NCKU_MAP
                     int R = int.Parse(reader["R"].ToString());
                     int G = int.Parse(reader["G"].ToString());
                     int B = int.Parse(reader["B"].ToString());
-                    table[i].BackColor = Color.FromArgb(A, R, G, B);
+                    table[i].BackColor = Color.FromArgb(R, G, B);
                     reader.Close();
                 }
                 else if ((i >= 12 && i <= 21) || (i >= 23 && i <= 32) || (i >= 34 && i <= 43) || (i >= 45 && i <= 54) || (i >= 56 && i <= 65))
                 {
                     reader.Close();
                     table[i].Text = "";
+                    if (sel == 0)
+                        table[i].Enabled = true;
+                    if (sel == 1)
+                        table[i].Enabled = false;
                 }
                 else
                     reader.Close();
@@ -168,15 +173,42 @@ namespace NCKU_MAP
         {
             Button btnclick = (Button)sender;
             tempnum = Array.IndexOf(table, btnclick);
+            tempbtn = (Button)sender;
             if (edit_or_view == 0)
             {
+                SqlConnection cn = new SqlConnection();
+                cn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+                    "AttachDbFilename=|DataDirectory|curriculums.mdf;" +
+                    "Integrated Security=True";
+                cn.Open();
+
+                string sqlstr = "SELECT 課名 FROM class where 課程id = " + tempnum.ToString();
+                SqlCommand cmd = new SqlCommand(sqlstr, cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                    tbxclass.Text = reader[0].ToString();
+                else
+                    tbxclass.Text = "";
+                reader.Close();
+
+                sqlstr = "SELECT 地點 FROM class where 課程id = " + tempnum.ToString();
+                cmd = new SqlCommand(sqlstr, cn);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                if(reader.HasRows)
+                    tbxplace.Text = reader[0].ToString();
+                else
+                    tbxplace.Text = "";
+                reader.Close();
+
                 gbxnewclass.Visible = true;
                 System.Drawing.Drawing2D.GraphicsPath aCircle = new System.Drawing.Drawing2D.GraphicsPath();
                 aCircle.AddEllipse(new Rectangle(0, 0, 45, 45));
                 btnsaveclass.Region = new Region(aCircle);
-                tempbtn = (Button)sender;
+                btndelclass.Region = new Region(aCircle);
                 //tbxclass.Text = tbxplace.Text = "";
-                DataBindings.Clear();
+                //DataBindings.Clear();
             }
             if(edit_or_view == 1)
             {
@@ -219,9 +251,9 @@ namespace NCKU_MAP
             DataSet ds = new DataSet();
             SqlDataAdapter daCategory = new SqlDataAdapter("SELECT * FROM class", cn);
             daCategory.Fill(ds, "class");
-            tbxclass.DataBindings.Add("Text", ds, "class.課名");
-            tbxplace.DataBindings.Add("Text", ds, "class.地點");
-            bm = this.BindingContext[ds, "class"];
+            //tbxclass.DataBindings.Add("Text", ds, "class.課名");
+            //tbxplace.DataBindings.Add("Text", ds, "class.地點");
+            //bm = this.BindingContext[ds, "class"];
             lbxS = lbxClassLocate;
             //tbxclass.Text = "";
             //tbxplace.Text = "";
@@ -308,8 +340,8 @@ namespace NCKU_MAP
                     //Edit("UPDATE class SET 課名= '" + tbxclass.Text.Replace("'", "''") +
                     //    "',地點='" + tbxplace.Text.Replace("'", "''") + "where 課程id=" + tempnum.ToString() + "'");
                     reader.Close();
-                    DataBindingsClear();
-                    Form3_Load(sender, e);
+                    //DataBindingsClear();
+                    //Form3_Load(sender, e);
                 }
                 else
                 {
@@ -317,8 +349,8 @@ namespace NCKU_MAP
                         tbxclass.Text.Replace("'", "''") + "',N'" +
                         tbxplace.Text.Replace("'", "''") + "'," +
                         tempnum + ")");
-                    DataBindingsClear();
-                    Form3_Load(sender, e);
+                    //DataBindingsClear();
+                    //Form3_Load(sender, e);
                 }
                 reader.Close();
                 tbxplace.Text = "";
@@ -348,12 +380,12 @@ namespace NCKU_MAP
                 MessageBox.Show(ex.Message);
             }
         }
-        void DataBindingsClear()
+        /*void DataBindingsClear()
         {
             tbxclass.DataBindings.Clear();
             tbxplace.DataBindings.Clear();
         }
-        /*
+        
         private void tbxplace_TextChanged(object sender, EventArgs e)
         {
 
@@ -557,6 +589,16 @@ namespace NCKU_MAP
                             result.Add(sceneData_[i]);
                     }
                 return result;
+            }
+        }
+
+        private void btndelclass_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("確認刪除此欄位?", "提醒", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                Edit("DELETE FROM class WHERE 課程id=" + tempnum.ToString());
+                tbxclass.Text = tbxplace.Text = "";
             }
         }
     }

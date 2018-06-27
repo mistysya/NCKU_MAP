@@ -51,7 +51,6 @@
             this.btnSide = new System.Windows.Forms.Button();
             this.btnAddScene = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnfeedback = new System.Windows.Forms.Button();
             this.btnclasstable = new System.Windows.Forms.Button();
             this.btnsaved = new System.Windows.Forms.Button();
             this.panlogo = new System.Windows.Forms.Panel();
@@ -69,6 +68,8 @@
             this.lblStoreList = new System.Windows.Forms.Label();
             this.lbxStorelist = new System.Windows.Forms.ListBox();
             this.btnStoreClose = new System.Windows.Forms.Button();
+            this.btnfeedback = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOpenTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPhoneNum)).BeginInit();
@@ -80,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxlogo)).BeginInit();
             this.panelNavigate.SuspendLayout();
             this.panelStoreList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbxSearch
@@ -336,19 +338,6 @@
             this.panel2.TabIndex = 7;
             this.panel2.Visible = false;
             // 
-            // btnfeedback
-            // 
-            this.btnfeedback.FlatAppearance.BorderSize = 0;
-            this.btnfeedback.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnfeedback.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnfeedback.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnfeedback.Location = new System.Drawing.Point(0, 613);
-            this.btnfeedback.Name = "btnfeedback";
-            this.btnfeedback.Size = new System.Drawing.Size(309, 70);
-            this.btnfeedback.TabIndex = 3;
-            this.btnfeedback.Text = "意見回饋";
-            this.btnfeedback.UseVisualStyleBackColor = true;
-            // 
             // btnclasstable
             // 
             this.btnclasstable.FlatAppearance.BorderSize = 0;
@@ -442,12 +431,13 @@
             // panelNavigate
             // 
             this.panelNavigate.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panelNavigate.Controls.Add(this.pictureBox1);
             this.panelNavigate.Controls.Add(this.btnNavigateFind);
             this.panelNavigate.Controls.Add(this.btncloseguide);
             this.panelNavigate.Controls.Add(this.lbxNavigate);
             this.panelNavigate.Controls.Add(this.tbxEnd);
             this.panelNavigate.Controls.Add(this.tbxStart);
-            this.panelNavigate.Location = new System.Drawing.Point(399, 0);
+            this.panelNavigate.Location = new System.Drawing.Point(384, 0);
             this.panelNavigate.Name = "panelNavigate";
             this.panelNavigate.Size = new System.Drawing.Size(350, 680);
             this.panelNavigate.TabIndex = 17;
@@ -455,15 +445,16 @@
             // 
             // btnNavigateFind
             // 
+            this.btnNavigateFind.BackColor = System.Drawing.Color.Lavender;
             this.btnNavigateFind.FlatAppearance.BorderSize = 0;
             this.btnNavigateFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNavigateFind.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNavigateFind.Location = new System.Drawing.Point(294, 110);
+            this.btnNavigateFind.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNavigateFind.Location = new System.Drawing.Point(288, 102);
             this.btnNavigateFind.Name = "btnNavigateFind";
-            this.btnNavigateFind.Size = new System.Drawing.Size(35, 35);
+            this.btnNavigateFind.Size = new System.Drawing.Size(50, 50);
             this.btnNavigateFind.TabIndex = 4;
             this.btnNavigateFind.Text = "Go";
-            this.btnNavigateFind.UseVisualStyleBackColor = true;
+            this.btnNavigateFind.UseVisualStyleBackColor = false;
             this.btnNavigateFind.Click += new System.EventHandler(this.btnNavigateFind_Click);
             // 
             // btncloseguide
@@ -520,7 +511,7 @@
             this.panelStoreList.Controls.Add(this.lblStoreList);
             this.panelStoreList.Controls.Add(this.lbxStorelist);
             this.panelStoreList.Controls.Add(this.btnStoreClose);
-            this.panelStoreList.Location = new System.Drawing.Point(374, 0);
+            this.panelStoreList.Location = new System.Drawing.Point(372, 0);
             this.panelStoreList.Name = "panelStoreList";
             this.panelStoreList.Size = new System.Drawing.Size(350, 680);
             this.panelStoreList.TabIndex = 18;
@@ -561,6 +552,30 @@
             this.btnStoreClose.UseVisualStyleBackColor = true;
             this.btnStoreClose.Click += new System.EventHandler(this.btnStoreClose_Click);
             // 
+            // btnfeedback
+            // 
+            this.btnfeedback.FlatAppearance.BorderSize = 0;
+            this.btnfeedback.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnfeedback.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnfeedback.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnfeedback.Location = new System.Drawing.Point(0, 613);
+            this.btnfeedback.Name = "btnfeedback";
+            this.btnfeedback.Size = new System.Drawing.Size(309, 70);
+            this.btnfeedback.TabIndex = 3;
+            this.btnfeedback.Text = "意見回饋";
+            this.btnfeedback.UseVisualStyleBackColor = true;
+            this.btnfeedback.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::NCKU_MAP.Properties.Resources.NCKU_logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(24, 343);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(500, 500);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -568,8 +583,8 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panelStoreList);
-            this.Controls.Add(this.panelNavigate);
             this.Controls.Add(this.lbxSearchBar);
+            this.Controls.Add(this.panelNavigate);
             this.Controls.Add(this.panlogo);
             this.Controls.Add(this.btnsheet);
             this.Controls.Add(this.panel2);
@@ -595,6 +610,7 @@
             this.panelNavigate.PerformLayout();
             this.panelStoreList.ResumeLayout(false);
             this.panelStoreList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -625,7 +641,6 @@
         private System.Windows.Forms.PictureBox pbxlogo;
         private System.Windows.Forms.Label lbltitle;
         private System.Windows.Forms.Button btnclosesheet;
-        private System.Windows.Forms.Button btnfeedback;
         private System.Windows.Forms.Button btnclasstable;
         private System.Windows.Forms.Button btnsaved;
         private System.Windows.Forms.Button btnguide;
@@ -641,6 +656,8 @@
         private System.Windows.Forms.Button btnStoreClose;
         private System.Windows.Forms.Label lblStoreList;
         public System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Button btnfeedback;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

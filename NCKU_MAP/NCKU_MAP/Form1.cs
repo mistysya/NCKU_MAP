@@ -18,7 +18,7 @@ namespace NCKU_MAP
     public partial class Form1 : Form
     {
         public Form2 f2 = new Form2();
-        public Form3 f3 = new Form3();
+        public Form3 f3; // = new Form3();
         private TextBox tbxS;
         private ListBox lbxS;
         //public WebBrowser webBrowser1 = webBrowserGmap;
@@ -41,7 +41,7 @@ namespace NCKU_MAP
             panelNavigate.Location = new Point(-panelNavigate.Width, 0); // initiallize sidebar location
             panlogo.Location = new Point(0, 0);
             lbxS = lbxSearchBar;
-            f3.f1 = this;
+            //f3.f1 = this;
         }
         public void UpdateLatLng(double lat, double lng)
         {
@@ -90,7 +90,7 @@ namespace NCKU_MAP
         private void btnguide_Click(object sender, EventArgs e)
         {
             System.Drawing.Drawing2D.GraphicsPath aCircle = new System.Drawing.Drawing2D.GraphicsPath();
-            aCircle.AddEllipse(new Rectangle(0, 0, 35, 35));
+            aCircle.AddEllipse(new Rectangle(0, 0, 50, 50));
             btnNavigateFind.Region = new Region(aCircle);
             panelNavigate.Location = new Point(0, 0);
             panelNavigate.Visible = true;
@@ -423,7 +423,7 @@ namespace NCKU_MAP
 
         private void btnclasstable_Click(object sender, EventArgs e)
         {
-            //f3 = new Form3();
+            f3 = new Form3(this);
             f3.Show();
         }
 

@@ -49,7 +49,6 @@ namespace NCKU_MAP
             tbxWebsite.DataBindings.Add("Text", ds, "SceneInfo.Website");
             tbxPhoneNum.DataBindings.Add("Text", ds, "SceneInfo.PhoneNumber");
             tbxOpenTime.DataBindings.Add("Text", ds, "SceneInfo.OpenTime");
-            tbxImgPath.DataBindings.Add("Text", ds, "SceneInfo.ImagePath");
             tbxAddress.DataBindings.Add("Text", ds, "SceneInfo.Address");
             tbxDescript.DataBindings.Add("Text", ds, "SceneInfo.SceneDescript");
 
@@ -74,7 +73,6 @@ namespace NCKU_MAP
                     tbxWebsite.Text.Replace("'", "''") + "',N'" +
                     tbxPhoneNum.Text.Replace("'", "''") + "',N'" +
                     tbxOpenTime.Text.Replace("'", "''") + "',N'" +
-                    tbxImgPath.Text.Replace("'", "''") + "','" +
                     tbxLat.Text.Replace("'", "''") + "','" +
                     tbxLng.Text.Replace("'", "''") + "'," +
                     0 + ")");
@@ -116,7 +114,6 @@ namespace NCKU_MAP
             tbxWebsite.DataBindings.Clear();
             tbxPhoneNum.DataBindings.Clear();
             tbxOpenTime.DataBindings.Clear();
-            tbxImgPath.DataBindings.Clear();
             tbxAddress.DataBindings.Clear();
             tbxDescript.DataBindings.Clear();
         }
@@ -138,7 +135,6 @@ namespace NCKU_MAP
                 "',Website=N'" + tbxWebsite.Text.Replace("'", "''") +
                 "',PhoneNumber=N'" + tbxPhoneNum.Text.Replace("'", "''") +
                 "',OpenTime=N'" + tbxOpenTime.Text.Replace("'", "''") +
-                "',ImagePath=N'" + tbxImgPath.Text.Replace("'", "''") +
                 "',Latitude=N'" + tbxLat.Text.Replace("'", "''") +
                 "',Longitude=N'" + tbxLng.Text.Replace("'", "''") +
                 "' WHERE mapID=N'" + tbxID.Text.Replace("'", "''") + "'");
